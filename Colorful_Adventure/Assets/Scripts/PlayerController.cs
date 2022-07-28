@@ -1,17 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
     private bool CanGoRight, CanGoLeft, CanGoUP, CanGoDown;
+
     private int ballCount;
+    public GameManagerLogic manager;
 
     private Renderer playerColor;
     Vector3 startPosition, targetPosition;
 
+    private Rigidbody rb;
+
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         Debug.Log("start");
         startPosition = transform.position;
         targetPosition = transform.position;
@@ -21,9 +28,13 @@ public class PlayerController : MonoBehaviour
     }
 
 
+
     void Update()
     {
-        if (startPosition != targetPosition) //ºÎµå·´°Ô ¿òÁ÷ÀÌ°Ô ÇÏ´Â ¹æ¹ı
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        if (startPosition != targetPosition) //ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
         {
             transform.position = Vector3.Lerp(transform.position, targetPosition, 0.1f);
         }
@@ -57,12 +68,13 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Ball"))
         {
+            manager.totalBallCount--;
             other.gameObject.SetActive(false);
             ballCount += 1;
 
             if (ballCount == 1)
             {
-                //ÇÃ·¹ÀÌ¾îÀÇ material ÄÃ·¯ == ºÎµúÈù ballÀÇ material colorÀÇ »ö»ó
+                //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ material ï¿½Ã·ï¿½ == ï¿½Îµï¿½ï¿½ï¿½ ballï¿½ï¿½ material colorï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 playerColor.material.color = ballColor.material.color;
             }
 
@@ -104,12 +116,12 @@ public class PlayerController : MonoBehaviour
                     playerColor.material.color = new Color32(255, 255, 153, 255); //bright yellow
                 }
 
-                //°°Àº »ö±òÀÌ¸é ±×´ë·Î´Â ÄÚµå Â© ÇÊ¿ä ¾øÀ½
+                //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½×´ï¿½Î´ï¿½ ï¿½Úµï¿½ Â© ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½
 
             }
             if (ballCount >= 3)
             {
-                // °°Àº »ö¹æ¿ïÀÌ¶óµµ, 3°³ ¸ÔÀ¸¸é ÇÃ·¹ÀÌ¾î ÄÃ·¯´Â °ËÁ¤»ö µÊ.
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½, 3ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
                 playerColor.material.color = Color.black;
             }
 
@@ -117,7 +129,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionStay(Collision other)
     {
-        //--------------------È­»ìÇ¥ ¿òÁ÷ÀÓ Á¦ÇÑ--------------------//
+        //--------------------È­ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½--------------------//
         if (other.gameObject.CompareTag("Arrow_U"))
         {
             Debug.Log("Arrow_Up_Collision");
@@ -146,9 +158,29 @@ public class PlayerController : MonoBehaviour
             CanGoDown = false;
             CanGoLeft = false;
         }
+
     }
     private void OnCollisionEnter(Collision other)
     {
+        //í”Œë ˆì´ì–´ì˜ ì›€ì§ì„ì„ ë§ê°€ëœ¨ë¦¬ì§€ ì•Šìœ¼ë©´ì„œë„ ë§µ ë°–ìœ¼ë¡œ ì´ë™í•˜ì§€ ëª»í•˜ë„ë¡ í•˜ëŠ” ê¸°ëŠ¥
+        //CheckPoint = íƒ€ì¼ê³¼ ê°™ì€ íë¸Œ ëª¨ì–‘(ë†’ì´ë§Œ ë” ë†’ìŒ)ì˜, ë§µ í…Œë‘ë¦¬ë¥¼ ë‘ë¥´ê³  ìˆëŠ” ê²ƒë“¤
+        if (other.gameObject.CompareTag("CheckPoint") && targetPosition.x > manager.maxX) { // no more right
+            targetPosition = new Vector3(manager.maxX, targetPosition.y, targetPosition.z);
+        }
+
+        if(other.gameObject.CompareTag("CheckPoint") &&targetPosition.x < manager.minX) { // no more left 
+            targetPosition = new Vector3(manager.minX, targetPosition.y, targetPosition.z);
+
+        }
+
+        if (other.gameObject.CompareTag("CheckPoint") &&targetPosition.z > manager.maxZ) { // no more up
+            targetPosition = new Vector3(targetPosition.x, targetPosition.y, manager.maxZ);
+        }
+
+        if (other.gameObject.CompareTag("CheckPoint") &&targetPosition.z < manager.minZ) { // no more down
+            targetPosition = new Vector3(targetPosition.x, targetPosition.y, manager.minZ);
+        }
+
         //--------------------Water Enter--------------------//
         if (other.gameObject.CompareTag("Water"))
         {
@@ -156,13 +188,28 @@ public class PlayerController : MonoBehaviour
             if (waterColor.material.color != Color.black)
             {
                 playerColor.material.color = Color.white;
-                ballCount = 0;
             }
+        }
+
+        //--------------------Gate Enter--------------------//
+        if(other.gameObject.name == "Gate_green") {
+            if(playerColor.material.color == new Color32(0, 128, 0, 255) && manager.totalBallCount == 0) { // & ì¡°ê±´ í•˜ë‚˜ ë” ì¶”ê°€- ìƒ‰ë°©ìš¸ ëª¨ë‘ í¡ìˆ˜ ì—¬ë¶€ (ìµœì¢… ê°¯ìˆ˜ì™€ ì¼ì¹˜í•˜ëŠ”ì§€ ì—¬ë¶€)
+                Debug.Log("Next stage!!");
+                //SceneManager.LoadScene("GameScene_" + (manager.stage + 1).ToString());
+
+            }
+            else {
+                Debug.Log("Retry!");
+                //SceneManager.LoadScene("GameScene_" + manager.stage.ToString());
+
+            }
+
         }
     }
     private void OnCollisionExit(Collision other)
     {
-        //--------------------È­»ìÇ¥ ¿òÁ÷ÀÓ Á¦ÇÑ ÇØÁ¦--------------------//
+
+        //--------------------È­ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½--------------------//
         if (other.gameObject.CompareTag("Arrow_U") || other.gameObject.CompareTag("Arrow_D") || other.gameObject.CompareTag("Arrow_L") || other.gameObject.CompareTag("Arrow_R"))
         {
             Debug.Log("YouCanGoAnywhere");
@@ -176,12 +223,17 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("CloudOut");
             other.gameObject.SetActive(false);
+            
         }
         //--------------------Water--------------------//
         if (other.gameObject.CompareTag("Water"))
         {
+            if(ballCount > 0) { //ìƒ‰ë°©ìš¸ì„ ì•„ì§ í•˜ë‚˜ë„ ë¨¹ì§€ ì•Šì€ ìƒíƒœì—ì„œ ë¬¼ íƒ€ì¼ ê±´ë“¤ ê²½ìš°ì—” ì•„ë¬´ ì¼ xì´ë¯€ë¡œ
+            // ìƒ‰ë°©ìš¸ì„ í•˜ë‚˜ë¼ë„ ë¨¹ì€ ì´í›„ì—¬ì•¼ ë¬¼ íƒ€ì¼ì´ ì‘ë™ëœë‹¤ëŠ” ì¡°ê±´ ì¶”ê°€
             Renderer waterColor = other.gameObject.GetComponent<MeshRenderer>();
             waterColor.material.color = Color.black;
+            ballCount = 0;
+            }
         }
     }
 }
