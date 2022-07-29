@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         ballCount = 0;
         // Map의 자식 오브젝트 배열
         MapArr = GetMap.GetComponentsInChildren<Transform>();
+
         // Map에 있는 좌표는 움직일 수 있음
         for (int i = 0; i < MapArr.Length; i++)
         {
@@ -33,12 +34,30 @@ public class PlayerController : MonoBehaviour
             int z = (int)MapArr[i].transform.position.z;
             movable[x, z] = true;
         }
+        
+    }
+
+    void MeetColorCube() { //컬러큐브 pass 여부 판단 함수
+        for (int i = 0; i < MapArr.Length; i++)
+        {
+            if (MapArr[i].transform.CompareTag("ColorCube")) {
+                int x = (int)MapArr[i].transform.position.x;
+                int z = (int)MapArr[i].transform.position.z;
+                movable[x,z] = false; // 기본적으로는 컬러큐브 pass 불가
+                if(playerColor.material.color == MapArr[i].gameObject.GetComponent<Renderer>().material.color)
+                // only if (플레이어 색 == 컬러큐브 색)
+                { 
+                    movable[x,z] = true; // can pass
+                }
+            }
+        }
     }
 
 
 
     void Update()
     {
+        MeetColorCube();
         // 움직일 수 없는 경우, do not move
         if (!movable[(int)targetPosition.x, (int)targetPosition.z])
         {
@@ -173,25 +192,6 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision other)
     {
-        //플레이어의 움직임을 망가뜨리지 않으면서도 맵 밖으로 이동하지 못하도록 하는 기능
-        //CheckPoint = 타일과 같은 큐브 모양(높이만 더 높음)의, 맵 테두리를 두르고 있는 것들
-        if (other.gameObject.CompareTag("CheckPoint") && targetPosition.x > manager.maxX) { // no more right
-            targetPosition = new Vector3(manager.maxX, targetPosition.y, targetPosition.z);
-        }
-
-        if(other.gameObject.CompareTag("CheckPoint") &&targetPosition.x < manager.minX) { // no more left 
-            targetPosition = new Vector3(manager.minX, targetPosition.y, targetPosition.z);
-
-        }
-
-        if (other.gameObject.CompareTag("CheckPoint") &&targetPosition.z > manager.maxZ) { // no more up
-            targetPosition = new Vector3(targetPosition.x, targetPosition.y, manager.maxZ);
-        }
-
-        if (other.gameObject.CompareTag("CheckPoint") &&targetPosition.z < manager.minZ) { // no more down
-            targetPosition = new Vector3(targetPosition.x, targetPosition.y, manager.minZ);
-        }
-
         //--------------------Water Enter--------------------//
         if (other.gameObject.CompareTag("Water"))
         {
@@ -206,12 +206,28 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.name == "Gate_green") {
             if(playerColor.material.color == new Color32(0, 128, 0, 255) && manager.totalBallCount == 0) { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
                 Debug.Log("Next stage!!");
-                //SceneManager.LoadScene("GameScene_" + (manager.stage + 1).ToString());
+                //SceneManager.LoadScene("GameScene_" + (manager.stage + 1).ToString()); 다음씬 이동 코드
 
             }
             else {
                 Debug.Log("Retry!");
-                //SceneManager.LoadScene("GameScene_" + manager.stage.ToString());
+                //SceneManager.LoadScene("GameScene_" + manager.stage.ToString()); 이 씬 재시도
+                //만약 관문까지 왔는데 조건 풀충족x인 경우엔 실패 라고 뜨고 retry하게 만들기
+
+            }
+
+        }
+
+        if(other.gameObject.name == "Gate_pink") {
+            if(playerColor.material.color == new Color32(255, 192, 203, 255) && manager.totalBallCount == 0) { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
+                Debug.Log("Next stage!!");
+                //SceneManager.LoadScene("GameScene_" + (manager.stage + 1).ToString()); 다음씬 이동 코드
+
+            }
+            else {
+                Debug.Log("Retry!");
+                //SceneManager.LoadScene("GameScene_" + manager.stage.ToString()); 이 씬 재시도
+                //만약 관문까지 왔는데 조건 풀충족x인 경우엔 실패 라고 뜨고 retry하게 만들기
 
             }
 

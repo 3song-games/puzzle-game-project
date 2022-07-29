@@ -7,8 +7,6 @@ public class GameManagerLogic : MonoBehaviour
 {
     public int totalBallCount;
 
-    public float maxX, minX, maxZ, minZ;
-
     // Start is called before the first frame update
     void Start()
     {
