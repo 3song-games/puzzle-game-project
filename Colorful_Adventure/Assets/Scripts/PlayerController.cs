@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.RightArrow) && CanGoRight)
         {
             startPosition = transform.position;
-            targetPosition = transform.position + new Vector3(1.1f, 0, 1.1f);
+            targetPosition = transform.position + new Vector3(0, 0, 1.1f);
         }
     }
 
