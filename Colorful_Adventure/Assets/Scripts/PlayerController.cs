@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        if (startPosition != targetPosition) //�ε巴�� �����̰� �ϴ� ���
+        if (startPosition != targetPosition) // 부드럽게 이동
         {
             transform.position = Vector3.Lerp(transform.position, targetPosition, 0.1f);
         }
@@ -43,22 +43,22 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && CanGoUP)
         {
             startPosition = transform.position;
-            targetPosition = transform.position + new Vector3(0, 0, 1.1f);
+            targetPosition = transform.position + new Vector3(-1.1f, 0, 0);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && CanGoDown)
         {
             startPosition = transform.position;
-            targetPosition = transform.position + new Vector3(0, 0, -1.1f);
+            targetPosition = transform.position + new Vector3(1.1f, 0, 0);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && CanGoLeft)
         {
             startPosition = transform.position;
-            targetPosition = transform.position + new Vector3(-1.1f, 0, 0);
+            targetPosition = transform.position + new Vector3(0, 0, -1.1f);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) && CanGoRight)
         {
             startPosition = transform.position;
-            targetPosition = transform.position + new Vector3(1.1f, 0, 0);
+            targetPosition = transform.position + new Vector3(1.1f, 0, 1.1f);
         }
     }
 
@@ -74,7 +74,6 @@ public class PlayerController : MonoBehaviour
 
             if (ballCount == 1)
             {
-                //�÷��̾��� material �÷� == �ε��� ball�� material color�� ����
                 playerColor.material.color = ballColor.material.color;
             }
 
@@ -116,12 +115,12 @@ public class PlayerController : MonoBehaviour
                     playerColor.material.color = new Color32(255, 255, 153, 255); //bright yellow
                 }
 
-                //���� �����̸� �״�δ� �ڵ� © �ʿ� ����
+                //같은 색 만날 때 변하는 코드 없어도 된다.
 
             }
             if (ballCount >= 3)
             {
-                // ���� ������̶�, 3�� ������ �÷��̾� �÷��� ������ ��.
+                // 3
                 playerColor.material.color = Color.black;
             }
 
