@@ -7,12 +7,15 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private bool CanGoRight, CanGoLeft, CanGoUP, CanGoDown;
+    private bool[,] movable = new bool[100, 100]; // 움직일 수 있는 좌표평면(Map)
 
-    private int ballCount;
     public GameManagerLogic manager;
+    public GameObject GetMap; 
+    private Transform[] MapArr;
 
     private Renderer playerColor;
-    Vector3 startPosition, targetPosition;
+    private Vector3 targetPosition;
+    private int ballCount; // 현재 먹은 색방울의 개수
 
     void Start()
     {
@@ -21,14 +24,29 @@ public class PlayerController : MonoBehaviour
         playerColor = gameObject.GetComponent<Renderer>();
         CanGoRight = true; CanGoLeft = true; CanGoUP = true; CanGoDown = true;
         ballCount = 0;
+        // Map의 자식 오브젝트 배열
+        MapArr = GetMap.GetComponentsInChildren<Transform>();
+        // Map에 있는 좌표는 움직일 수 있음
+        for (int i = 0; i < MapArr.Length; i++)
+        {
+            int x = (int)MapArr[i].transform.position.x;
+            int z = (int)MapArr[i].transform.position.z;
+            movable[x, z] = true;
+        }
     }
 
 
 
     void Update()
     {
+        // 움직일 수 없는 경우, do not move
+        if (!movable[(int)targetPosition.x, (int)targetPosition.z])
+        {
+            targetPosition = transform.position;
+        }
+
         // reset point: 절댓값 차이가 작은 경우 강제로 position 지정
-        if (Mathf.Abs(transform.position.x - targetPosition.x) < 0.0001f && Mathf.Abs(transform.position.z - targetPosition.z) < 0.0001f)
+        if (Mathf.Abs(transform.position.x - targetPosition.x) < 0.01f && Mathf.Abs(transform.position.z - targetPosition.z) < 0.01f)
         {
             transform.position = targetPosition;
         }
@@ -216,7 +234,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("CloudOut");
             other.gameObject.SetActive(false);
-            
+            movable[(int)other.transform.position.x, (int)other.transform.position.y] = false;
         }
         //--------------------Water--------------------//
         if (other.gameObject.CompareTag("Water"))

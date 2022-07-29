@@ -13,6 +13,8 @@ TagManager:
   - Arrow_R
   - Ball
   - ColorCube
+  - GameManager
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
