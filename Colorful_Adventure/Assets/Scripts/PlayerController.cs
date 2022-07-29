@@ -14,13 +14,9 @@ public class PlayerController : MonoBehaviour
     private Renderer playerColor;
     Vector3 startPosition, targetPosition;
 
-    private Rigidbody rb;
-
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         Debug.Log("start");
-        startPosition = transform.position;
         targetPosition = transform.position;
         playerColor = gameObject.GetComponent<Renderer>();
         CanGoRight = true; CanGoLeft = true; CanGoUP = true; CanGoDown = true;
@@ -31,33 +27,31 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-
-        if (startPosition != targetPosition) // 부드럽게 이동
+        // reset point: 절댓값 차이가 작은 경우 강제로 position 지정
+        if (Mathf.Abs(transform.position.x - targetPosition.x) < 0.0001f && Mathf.Abs(transform.position.z - targetPosition.z) < 0.0001f)
+        {
+            transform.position = targetPosition;
+        }
+        
+        if (transform.position != targetPosition) // 부드럽게 이동
         {
             transform.position = Vector3.Lerp(transform.position, targetPosition, 0.1f);
         }
-
         //--------------------Movement--------------------//
-        if (Input.GetKeyDown(KeyCode.UpArrow) && CanGoUP)
+        else if (Input.GetKeyDown(KeyCode.UpArrow) && CanGoUP)
         {
-            startPosition = transform.position;
             targetPosition = transform.position + new Vector3(-1.1f, 0, 0);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && CanGoDown)
         {
-            startPosition = transform.position;
             targetPosition = transform.position + new Vector3(1.1f, 0, 0);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && CanGoLeft)
         {
-            startPosition = transform.position;
             targetPosition = transform.position + new Vector3(0, 0, -1.1f);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) && CanGoRight)
         {
-            startPosition = transform.position;
             targetPosition = transform.position + new Vector3(0, 0, 1.1f);
         }
     }
@@ -120,7 +114,7 @@ public class PlayerController : MonoBehaviour
             }
             if (ballCount >= 3)
             {
-                // 3
+                // 3개 이상은 black
                 playerColor.material.color = Color.black;
             }
 
@@ -128,7 +122,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionStay(Collision other)
     {
-        //--------------------ȭ��ǥ ������ ����--------------------//
+        //--------------------화살표 이동 제한--------------------//
         if (other.gameObject.CompareTag("Arrow_U"))
         {
             Debug.Log("Arrow_Up_Collision");
@@ -208,7 +202,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit(Collision other)
     {
 
-        //--------------------ȭ��ǥ ������ ���� ����--------------------//
+        //--------------------화살표 이동 제한 해제--------------------//
         if (other.gameObject.CompareTag("Arrow_U") || other.gameObject.CompareTag("Arrow_D") || other.gameObject.CompareTag("Arrow_L") || other.gameObject.CompareTag("Arrow_R"))
         {
             Debug.Log("YouCanGoAnywhere");
