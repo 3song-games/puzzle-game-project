@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private Renderer playerColor;
     private Vector3 targetPosition;
-    private int ballCount; // 현재 먹은 색방울의 개수
+    public int ballCount; // 현재 먹은 색방울의 개수
 
     void Start()
     {
@@ -193,12 +193,14 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         //--------------------Water Enter--------------------//
-        if (other.gameObject.CompareTag("Water"))
+        if (other.gameObject.CompareTag("Water") && ballCount > 0)
         {
             Renderer waterColor = other.gameObject.GetComponent<MeshRenderer>();
             if (waterColor.material.color != Color.black)
             {
                 playerColor.material.color = Color.white;
+                ballCount = 0;
+                waterColor.material.color = Color.black;
             }
         }
 
@@ -251,16 +253,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log("CloudOut");
             other.gameObject.SetActive(false);
             movable[(int)other.transform.position.x, (int)other.transform.position.y] = false;
-        }
-        //--------------------Water--------------------//
-        if (other.gameObject.CompareTag("Water"))
-        {
-            if(ballCount > 0) { //색방울을 아직 하나도 먹지 않은 상태에서 물 타일 건들 경우엔 아무 일 x이므로
-            // 색방울을 하나라도 먹은 이후여야 물 타일이 작동된다는 조건 추가
-            Renderer waterColor = other.gameObject.GetComponent<MeshRenderer>();
-            waterColor.material.color = Color.black;
-            ballCount = 0;
-            }
         }
     }
 }
