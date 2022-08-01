@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    void MeetColorCube() { //컬러큐브 pass 여부 판단 함수
+    void MeetSpecialCube() { //특정기능타일 pass 여부 판단 함수
         for (int i = 0; i < MapArr.Length; i++)
         {
             if (MapArr[i].transform.CompareTag("ColorCube")) {
@@ -50,14 +50,26 @@ public class PlayerController : MonoBehaviour
                     movable[x,z] = true; // can pass
                 }
             }
+
+            if (MapArr[i].transform.CompareTag("Cloud")) {
+                int x = (int)MapArr[i].transform.position.x;
+                int z = (int)MapArr[i].transform.position.z;
+                movable[x,z] = true; // 기본적으로는 구름타일 pass 가능
+                if(MapArr[i].gameObject.activeSelf == false)
+                // 이미 지나간 후의 구름타일(비활성화 ver.)
+                { 
+                    movable[x,z] = false; // cannot pass
+                }
+            }
         }
     }
 
 
 
+
     void Update()
     {
-        MeetColorCube();
+        MeetSpecialCube();
         // 움직일 수 없는 경우, do not move
         if (!movable[(int)targetPosition.x, (int)targetPosition.z])
         {
