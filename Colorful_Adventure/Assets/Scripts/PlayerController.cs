@@ -14,12 +14,13 @@ public class PlayerController : MonoBehaviour
     private Transform[] MapArr;
 
     private Renderer playerColor;
-    private Vector3 targetPosition;
+    private Vector3 premove, targetPosition;
     public int ballCount; // 현재 먹은 색방울의 개수
 
     void Start()
     {
         Debug.Log("start");
+        premove = Vector3.zero;
         targetPosition = transform.position;
         playerColor = gameObject.GetComponent<Renderer>();
         CanGoRight = true; CanGoLeft = true; CanGoUP = true; CanGoDown = true;
@@ -84,23 +85,35 @@ public class PlayerController : MonoBehaviour
         
         if (transform.position != targetPosition) // 부드럽게 이동
         {
-            transform.position = Vector3.Lerp(transform.position, targetPosition, 0.1f);
+            float speed;
+            //얼음 너무 빨리 움직일 때
+            if (Mathf.Abs(transform.position.x - targetPosition.x) > 1.1f || Mathf.Abs(transform.position.z - targetPosition.z) > 1.1f)
+            {
+                speed = 0.05f;
+                Debug.Log("slow");
+            }
+            else speed = 0.1f;
+            transform.position = Vector3.Lerp(transform.position, targetPosition, speed);
         }
         //--------------------Movement--------------------//
         else if (Input.GetKeyDown(KeyCode.UpArrow) && CanGoUP)
         {
+            premove = new Vector3(-1.1f, 0, 0);
             targetPosition = transform.position + new Vector3(-1.1f, 0, 0);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && CanGoDown)
         {
+            premove = new Vector3(1.1f, 0, 0);
             targetPosition = transform.position + new Vector3(1.1f, 0, 0);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && CanGoLeft)
         {
+            premove = new Vector3(0, 0, -1.1f);
             targetPosition = transform.position + new Vector3(0, 0, -1.1f);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) && CanGoRight)
         {
+            premove = new Vector3(0, 0, 1.1f);
             targetPosition = transform.position + new Vector3(0, 0, 1.1f);
         }
     }
@@ -215,9 +228,23 @@ public class PlayerController : MonoBehaviour
                 waterColor.material.color = Color.black;
             }
         }
+        //--------------------Ice Enter--------------------//
+        if (other.gameObject.CompareTag("Ice"))
+        {
+            Debug.Log("Ice");
+            int x = (int)targetPosition.x;
+            int z = (int)targetPosition.z;
+            while (true)
+            {
+                x += (int)premove.x;
+                z += (int)premove.z;
+                if (movable[x, z]) targetPosition += premove;
+                else break;
+            }
+        }
 
         //--------------------Gate Enter--------------------//
-        if(other.gameObject.name == "Gate_green") {
+        if (other.gameObject.name == "Gate_green") {
             if(playerColor.material.color == new Color32(0, 128, 0, 255) && manager.totalBallCount == 0) { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
                 Debug.Log("Next stage!!");
                 //SceneManager.LoadScene("GameScene_" + (manager.stage + 1).ToString()); 다음씬 이동 코드
