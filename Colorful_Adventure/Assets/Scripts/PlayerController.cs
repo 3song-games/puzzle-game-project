@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour
         // Map에 있는 좌표는 움직일 수 있음
         for (int i = 0; i < MapArr.Length; i++)
         {
-            int x = (int)MapArr[i].transform.position.x;
-            int z = (int)MapArr[i].transform.position.z;
+            int x = (int)(MapArr[i].transform.position.x / 1.1f + 0.5f);
+            int z = (int)(MapArr[i].transform.position.z / 1.1f + 0.5f);
             movable[x, z] = true;
         }
         
@@ -42,8 +42,8 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < MapArr.Length; i++)
         {
             if (MapArr[i].transform.CompareTag("ColorCube")) {
-                int x = (int)MapArr[i].transform.position.x;
-                int z = (int)MapArr[i].transform.position.z;
+                int x = (int)(MapArr[i].transform.position.x / 1.1f + 0.5f);
+                int z = (int)(MapArr[i].transform.position.z / 1.1f + 0.5f);
                 movable[x,z] = false; // 기본적으로는 컬러큐브 pass 불가
                 if(playerColor.material.color == MapArr[i].gameObject.GetComponent<Renderer>().material.color)
                 // only if (플레이어 색 == 컬러큐브 색)
@@ -53,8 +53,8 @@ public class PlayerController : MonoBehaviour
             }
 
             if (MapArr[i].transform.CompareTag("Cloud")) {
-                int x = (int)MapArr[i].transform.position.x;
-                int z = (int)MapArr[i].transform.position.z;
+                int x = (int)(MapArr[i].transform.position.x / 1.1f + 0.5f);
+                int z = (int)(MapArr[i].transform.position.z / 1.1f + 0.5f);
                 movable[x,z] = true; // 기본적으로는 구름타일 pass 가능
                 if(MapArr[i].gameObject.activeSelf == false)
                 // 이미 지나간 후의 구름타일(비활성화 ver.)
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         MeetSpecialCube();
         // 움직일 수 없는 경우, do not move
-        if (!movable[(int)targetPosition.x, (int)targetPosition.z])
+        if (!movable[(int)(targetPosition.x / 1.1f + 0.5f), (int)(targetPosition.z / 1.1f + 0.5f)])
         {
             targetPosition = transform.position;
         }
@@ -87,9 +87,9 @@ public class PlayerController : MonoBehaviour
         {
             float speed;
             //얼음 너무 빨리 움직일 때
-            if (Mathf.Abs(transform.position.x - targetPosition.x) > 1.1f || Mathf.Abs(transform.position.z - targetPosition.z) > 1.1f)
+            if (Mathf.Abs(transform.position.x - targetPosition.x) > 1.5f || Mathf.Abs(transform.position.z - targetPosition.z) > 1.5f)
             {
-                speed = 0.05f;
+                speed = 0.04f;
                 Debug.Log("slow");
             }
             else speed = 0.1f;
@@ -232,8 +232,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Ice"))
         {
             Debug.Log("Ice");
-            int x = (int)targetPosition.x;
-            int z = (int)targetPosition.z;
+            int x = (int)(targetPosition.x / 1.1f + 0.5f);
+            int z = (int)(targetPosition.z / 1.1f + 0.5f);
             while (true)
             {
                 x += (int)premove.x;
@@ -291,7 +291,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("CloudOut");
             other.gameObject.SetActive(false);
-            movable[(int)other.transform.position.x, (int)other.transform.position.y] = false;
+            movable[(int)(other.transform.position.x / 1.1f + 0.5f), (int)(other.transform.position.y / 1.1f + 0.5f)] = false;
         }
     }
 }
