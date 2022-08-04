@@ -247,7 +247,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.name == "Gate_green") {
             if(playerColor.material.color == new Color32(0, 128, 0, 255) && manager.totalBallCount == 0) { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
                 Debug.Log("Next stage!!");
-                //SceneManager.LoadScene("GameScene_" + (manager.stage + 1).ToString()); 다음씬 이동 코드
+                //SceneManager.LoadScene(manager.stage);
 
             }
             else {
