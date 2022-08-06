@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
                 speed = 0.04f;
                 Debug.Log("slow");
             }
-            else speed = 0.1f;
+            else speed = 0.15f;
             transform.position = Vector3.Lerp(transform.position, targetPosition, speed);
         }
         //--------------------Movement--------------------//
