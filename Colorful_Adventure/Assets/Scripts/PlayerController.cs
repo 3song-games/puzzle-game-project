@@ -136,39 +136,39 @@ public class PlayerController : MonoBehaviour
             if (ballCount == 2)
             {
                 // red + blue = purple
-                if ((playerColor.material.color == Color.red && ballColor.material.color == Color.blue) || (playerColor.material.color == Color.blue && ballColor.material.color == Color.red))
+                if ((playerColor.material.color == new Color32(231,29,34,255) && ballColor.material.color == new Color32(0,162,231,255)) || (playerColor.material.color == new Color32(0,162,231,255) && ballColor.material.color == new Color32(231,29,34,255)))
                 {
-                    playerColor.material.color = new Color32(106, 13, 173, 255); //purple
+                    playerColor.material.color = new Color32(141, 71, 151, 255); //purple
                 }
 
                 // red + yellow = orange
-                if ((playerColor.material.color == Color.red && ballColor.material.color == new Color32(255, 255, 0, 255)) || (playerColor.material.color == new Color32(255, 255, 0, 255) && ballColor.material.color == Color.red))
+                if ((playerColor.material.color == new Color32(231,29,34,255) && ballColor.material.color == new Color32(242, 232, 77, 255)) || (playerColor.material.color == new Color32(242, 232, 77, 255) && ballColor.material.color == new Color32(231,29,34,255)))
                 {
-                    playerColor.material.color = new Color32(255, 165, 0, 255); //orange
+                    playerColor.material.color = new Color32(236, 101, 21, 255); //orange
                 }
 
                 //red + white = pink
-                if ((playerColor.material.color == Color.red && ballColor.material.color == Color.white) || (playerColor.material.color == Color.white && ballColor.material.color == Color.red))
+                if ((playerColor.material.color == new Color32(231,29,34,255) && ballColor.material.color == Color.white) || (playerColor.material.color == Color.white && ballColor.material.color == new Color32(231,29,34,255)))
                 {
-                    playerColor.material.color = new Color32(255, 192, 203, 255); //pink
+                    playerColor.material.color = new Color32(244, 177, 184, 255); //pink
                 }
 
                 //blue + yellow = green
-                if ((playerColor.material.color == Color.blue && ballColor.material.color == new Color32(255, 255, 0, 255)) || (playerColor.material.color == new Color32(255, 255, 0, 255) && ballColor.material.color == Color.blue))
+                if ((playerColor.material.color == new Color32(0,162,231,255) && ballColor.material.color == new Color32(242, 232, 77, 255)) || (playerColor.material.color == new Color32(242, 232, 77, 255) && ballColor.material.color == new Color32(0,162,231,255)))
                 {
-                    playerColor.material.color = new Color32(0, 128, 0, 255); //green
+                    playerColor.material.color = new Color32(60, 175, 53, 255); //green
                 }
 
                 //blue + white = skyblue
-                if ((playerColor.material.color == Color.blue && ballColor.material.color == Color.white) || (playerColor.material.color == Color.white && ballColor.material.color == Color.blue))
+                if ((playerColor.material.color == new Color32(0,162,231,255) && ballColor.material.color == Color.white) || (playerColor.material.color == Color.white && ballColor.material.color == new Color32(0,162,231,255)))
                 {
-                    playerColor.material.color = new Color32(135, 206, 235, 255); //skyblue
+                    playerColor.material.color = new Color32(185, 225, 235, 255); //skyblue
                 }
 
                 //yellow + white = bright yellow
-                if ((playerColor.material.color == new Color32(255, 255, 0, 255) && ballColor.material.color == Color.white) || (playerColor.material.color == Color.white && ballColor.material.color == new Color32(255, 255, 0, 255)))
+                if ((playerColor.material.color == new Color32(242, 232, 77, 255) && ballColor.material.color == Color.white) || (playerColor.material.color == Color.white && ballColor.material.color == new Color32(242, 232, 77, 255)))
                 {
-                    playerColor.material.color = new Color32(255, 255, 153, 255); //bright yellow
+                    playerColor.material.color = new Color32(245, 245, 174, 255); //bright yellow
                 }
 
                 //같은 색 만날 때 변하는 코드 없어도 된다.
@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
             if (ballCount >= 3)
             {
                 // 3개 이상은 black
-                playerColor.material.color = Color.black;
+                playerColor.material.color = new Color32(5,13,38,255);
             }
 
         }
@@ -221,11 +221,13 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Water") && ballCount > 0)
         {
             Renderer waterColor = other.gameObject.GetComponent<MeshRenderer>();
-            if (waterColor.material.color != Color.black)
+            Renderer waterdropColor = other.transform.Find("default").gameObject.GetComponent<MeshRenderer>();
+            if (waterColor.material.color != new Color32(24,133,122,255))
             {
                 playerColor.material.color = Color.white;
                 ballCount = 0;
-                waterColor.material.color = Color.black;
+                waterColor.material.color = new Color32(24,133,122,255);
+                waterdropColor.material.color = new Color32(5,13,38,255);
             }
         }
         //--------------------Ice Enter--------------------//
@@ -245,31 +247,27 @@ public class PlayerController : MonoBehaviour
 
         //--------------------Gate Enter--------------------//
         if (other.gameObject.name == "Gate_green") {
-            if(playerColor.material.color == new Color32(0, 128, 0, 255) && manager.totalBallCount == 0) { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
+            if(playerColor.material.color == new Color32(60, 175, 53, 255) && manager.totalBallCount == 0) { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
                 Debug.Log("Next stage!!");
-                //SceneManager.LoadScene(manager.stage);
+                SceneManager.LoadScene((manager.stage)+1);
 
             }
             else {
                 Debug.Log("Retry!");
-                //SceneManager.LoadScene("GameScene_" + manager.stage.ToString()); 이 씬 재시도
-                //만약 관문까지 왔는데 조건 풀충족x인 경우엔 실패 라고 뜨고 retry하게 만들기
+                //ui로 retry 뜨고 재시도할 수 있게끔
 
             }
 
         }
 
         if(other.gameObject.name == "Gate_pink") {
-            if(playerColor.material.color == new Color32(255, 192, 203, 255) && manager.totalBallCount == 0) { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
+            if(playerColor.material.color == new Color32(244, 177, 184, 255) && manager.totalBallCount == 0) { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
                 Debug.Log("Next stage!!");
-                //SceneManager.LoadScene("GameScene_" + (manager.stage + 1).ToString()); 다음씬 이동 코드
-
+                SceneManager.LoadScene((manager.stage)+1);
             }
             else {
                 Debug.Log("Retry!");
-                //SceneManager.LoadScene("GameScene_" + manager.stage.ToString()); 이 씬 재시도
-                //만약 관문까지 왔는데 조건 풀충족x인 경우엔 실패 라고 뜨고 retry하게 만들기
-
+                //ui로 retry 뜨고 재시도할 수 있게끔
             }
 
         }
