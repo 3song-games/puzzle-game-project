@@ -15,7 +15,12 @@ public class PlayerController : MonoBehaviour
 
     private Renderer playerColor;
     private Vector3 premove, targetPosition;
-    public int ballCount; // 현재 먹은 색방울의 개수
+    public int ballCount; // 현재 먹은 색방울의 개수 (물방울타일 영향 받)
+    private int finalGetBall; // UI 표시용. 플레이어가 get한 색방울 갯수 누적ver.
+
+    public GameObject IfClear; // 관문 통과 성공 시 성공 팝업창 활성화
+
+    public GameObject IfFailed; // 실패 팝업창 활성화
 
     void Start()
     {
@@ -127,6 +132,8 @@ public class PlayerController : MonoBehaviour
             manager.totalBallCount--;
             other.gameObject.SetActive(false);
             ballCount += 1;
+            finalGetBall += 1;
+            manager.GetBall(finalGetBall);
 
             if (ballCount == 1)
             {
@@ -249,11 +256,11 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.name == "Gate_green") {
             if(playerColor.material.color == new Color32(60, 175, 53, 255) && manager.totalBallCount == 0) { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
                 Debug.Log("Next stage!!");
-                SceneManager.LoadScene((manager.stage)+1);
-
+                //SceneManager.LoadScene((manager.stage)+1);
+                IfClear.SetActive(true);
             }
             else {
-                Debug.Log("Retry!");
+                IfFailed.SetActive(true);
                 //ui로 retry 뜨고 재시도할 수 있게끔
 
             }
@@ -263,11 +270,11 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.name == "Gate_pink") {
             if(playerColor.material.color == new Color32(244, 177, 184, 255) && manager.totalBallCount == 0) { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
                 Debug.Log("Next stage!!");
-                SceneManager.LoadScene((manager.stage)+1);
+                //SceneManager.LoadScene((manager.stage)+1);
+                IfClear.SetActive(true);
             }
             else {
-                Debug.Log("Retry!");
-                //ui로 retry 뜨고 재시도할 수 있게끔
+                IfFailed.SetActive(true);
             }
 
         }
