@@ -15,6 +15,7 @@ TagManager:
   - ColorCube
   - GameManager
   - CheckPoint
+  - Cube
   layers:
   - Default
   - TransparentFX
