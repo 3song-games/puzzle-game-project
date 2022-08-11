@@ -2241,6 +2241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalBallCount: 5
   stage: 0
+  totalBallText: {fileID: 0}
+  playerBallText: {fileID: 0}
 --- !u!23 &1396076491
 MeshRenderer:
   m_ObjectHideFlags: 0

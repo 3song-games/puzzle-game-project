@@ -1337,6 +1337,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball_red (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2573558036709470869, guid: 1435b496500fd5848a64bca5049e718f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2953461726074054703, guid: 1435b496500fd5848a64bca5049e718f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3147,6 +3151,10 @@ PrefabInstance:
     - target: {fileID: 2573558036709470869, guid: 1435b496500fd5848a64bca5049e718f, type: 3}
       propertyPath: m_Name
       value: Ball_red (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573558036709470869, guid: 1435b496500fd5848a64bca5049e718f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2953461726074054703, guid: 1435b496500fd5848a64bca5049e718f, type: 3}
       propertyPath: m_RootOrder

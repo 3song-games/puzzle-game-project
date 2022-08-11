@@ -83,6 +83,18 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+            if (MapArr[i].transform.CompareTag("Water"))
+            {
+                int x = (int)(MapArr[i].transform.position.x / 1.1f + 0.5f);
+                int z = (int)(MapArr[i].transform.position.z / 1.1f + 0.5f);
+                movable[x, z] = true;
+                if (MapArr[i].gameObject.GetComponent<Renderer>().material.color == new Color32(24,133,122,255))
+                // 1회 사용 후 오염된 watercube
+                {
+                    movable[x, z] = false; // cannot pass
+                }
+            }
+
         }
     }
 
@@ -277,21 +289,17 @@ public class PlayerController : MonoBehaviour
         }
 
         //--------------------Water Enter--------------------//
-        if (other.gameObject.CompareTag("Water") && ballCount > 0)
+        if (other.gameObject.CompareTag("Water"))
         {
             Renderer waterColor = other.gameObject.GetComponent<MeshRenderer>();
             Renderer waterdropColor = other.transform.Find("default").gameObject.GetComponent<MeshRenderer>();
-            if (waterColor.material.color != new Color32(24, 133, 122, 255))
+            if (waterColor.material.color != new Color32(24, 133, 122, 255) && ballCount > 0)
             {
-                this.aud.PlayOneShot(this.audWater); //물 타일 오염 시 효과음 재생
-
-                playerColor.material.color = Color.white;
                 ballCount = 0;
-                waterColor.material.color = new Color32(24, 133, 122, 255);
+                this.aud.PlayOneShot(this.audWater); //물 타일 오염 시 효과음 재생
                 waterdropColor.material.color = new Color32(5, 13, 38, 255);
+                playerColor.material.color = Color.white;
                 Debug.Log("RuinedWater");
-                movable[(int)(other.transform.position.x / 1.1f + 0.5f), (int)(other.transform.position.y / 1.1f + 0.5f)] = false; //오염 이후 이동 제한되어야 되는데 안됨??
-
             }
         }
         //--------------------Ice Enter--------------------//
@@ -376,5 +384,15 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             movable[(int)(other.transform.position.x / 1.1f + 0.5f), (int)(other.transform.position.y / 1.1f + 0.5f)] = false;
         }
-    }
+
+        if (other.gameObject.CompareTag("Water"))
+        {
+            Renderer waterColor = other.gameObject.GetComponent<MeshRenderer>();
+            Renderer waterdropColor = other.transform.Find("default").gameObject.GetComponent<MeshRenderer>();
+            if (waterdropColor.material.color == new Color32(5, 13, 38, 255)) {
+                waterColor.material.color = new Color32(24, 133, 122, 255);
+                movable[(int)(other.transform.position.x / 1.1f + 0.5f), (int)(other.transform.position.y / 1.1f + 0.5f)] = false;
+            }
+        }
+}
 }
