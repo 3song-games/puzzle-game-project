@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private bool[,] movable = new bool[100, 100]; // 움직일 수 있는 좌표평면(Map)
 
     public GameManagerLogic manager;
-    public GameObject GetMap; 
+    public GameObject GetMap;
     private Transform[] MapArr;
 
     private Renderer playerColor;
@@ -22,6 +22,17 @@ public class PlayerController : MonoBehaviour
 
     public GameObject IfFailed; // 실패 팝업창 활성화
 
+    public AudioClip audMove; //움직일 때 효과음
+    public AudioClip audBlock; //막힐 때 효과음
+    public AudioClip audWater; //물타일 enter 효과음
+    public AudioClip audCloud; //구름 exit 효과음
+    public AudioClip audIce; //얼음 enter 효과음
+    public AudioClip audClear; //스테이지 클리어 시 효과음
+    public AudioClip audFail; //스테이지 실패 시 효과음
+    public AudioClip audColorBall; //색방울 흡수 시 효과음
+
+    AudioSource aud;
+
     void Start()
     {
         Debug.Log("start");
@@ -30,6 +41,7 @@ public class PlayerController : MonoBehaviour
         playerColor = gameObject.GetComponent<Renderer>();
         CanGoRight = true; CanGoLeft = true; CanGoUP = true; CanGoDown = true;
         ballCount = 0;
+        this.aud = GetComponent<AudioSource>();
         // Map의 자식 오브젝트 배열
         MapArr = GetMap.GetComponentsInChildren<Transform>();
 
@@ -40,33 +52,37 @@ public class PlayerController : MonoBehaviour
             int z = (int)(MapArr[i].transform.position.z / 1.1f + 0.5f);
             movable[x, z] = true;
         }
-        
+
     }
 
-    void MeetSpecialCube() { //특정기능타일 pass 여부 판단 함수
+    void MeetSpecialCube()
+    { //특정기능타일 pass 여부 판단 함수
         for (int i = 0; i < MapArr.Length; i++)
         {
-            if (MapArr[i].transform.CompareTag("ColorCube")) {
+            if (MapArr[i].transform.CompareTag("ColorCube"))
+            {
                 int x = (int)(MapArr[i].transform.position.x / 1.1f + 0.5f);
                 int z = (int)(MapArr[i].transform.position.z / 1.1f + 0.5f);
-                movable[x,z] = false; // 기본적으로는 컬러큐브 pass 불가
-                if(playerColor.material.color == MapArr[i].gameObject.GetComponent<Renderer>().material.color)
+                movable[x, z] = false; // 기본적으로는 컬러큐브 pass 불가
+                if (playerColor.material.color == MapArr[i].gameObject.GetComponent<Renderer>().material.color)
                 // only if (플레이어 색 == 컬러큐브 색)
-                { 
-                    movable[x,z] = true; // can pass
+                {
+                    movable[x, z] = true; // can pass
                 }
             }
 
-            if (MapArr[i].transform.CompareTag("Cloud")) {
+            if (MapArr[i].transform.CompareTag("Cloud"))
+            {
                 int x = (int)(MapArr[i].transform.position.x / 1.1f + 0.5f);
                 int z = (int)(MapArr[i].transform.position.z / 1.1f + 0.5f);
-                movable[x,z] = true; // 기본적으로는 구름타일 pass 가능
-                if(MapArr[i].gameObject.activeSelf == false)
+                movable[x, z] = true; // 기본적으로는 구름타일 pass 가능
+                if (MapArr[i].gameObject.activeSelf == false)
                 // 이미 지나간 후의 구름타일(비활성화 ver.)
-                { 
-                    movable[x,z] = false; // cannot pass
+                {
+                    movable[x, z] = false; // cannot pass
                 }
             }
+
         }
     }
 
@@ -79,15 +95,16 @@ public class PlayerController : MonoBehaviour
         // 움직일 수 없는 경우, do not move
         if (!movable[(int)(targetPosition.x / 1.1f + 0.5f), (int)(targetPosition.z / 1.1f + 0.5f)])
         {
+            this.aud.PlayOneShot(this.audBlock);
+
             targetPosition = transform.position;
         }
-
         // reset point: 절댓값 차이가 작은 경우 강제로 position 지정
         if (Mathf.Abs(transform.position.x - targetPosition.x) < 0.01f && Mathf.Abs(transform.position.z - targetPosition.z) < 0.01f)
         {
             transform.position = targetPosition;
         }
-        
+
         if (transform.position != targetPosition) // 부드럽게 이동
         {
             float speed;
@@ -121,6 +138,8 @@ public class PlayerController : MonoBehaviour
             premove = new Vector3(0, 0, 1.1f);
             targetPosition = transform.position + new Vector3(0, 0, 1.1f);
         }
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -135,6 +154,8 @@ public class PlayerController : MonoBehaviour
             finalGetBall += 1;
             manager.GetBall(finalGetBall);
 
+            this.aud.PlayOneShot(this.audColorBall); //흡수 효과음
+
             if (ballCount == 1)
             {
                 playerColor.material.color = ballColor.material.color;
@@ -143,31 +164,31 @@ public class PlayerController : MonoBehaviour
             if (ballCount == 2)
             {
                 // red + blue = purple
-                if ((playerColor.material.color == new Color32(231,29,34,255) && ballColor.material.color == new Color32(0,162,231,255)) || (playerColor.material.color == new Color32(0,162,231,255) && ballColor.material.color == new Color32(231,29,34,255)))
+                if ((playerColor.material.color == new Color32(231, 29, 34, 255) && ballColor.material.color == new Color32(0, 162, 231, 255)) || (playerColor.material.color == new Color32(0, 162, 231, 255) && ballColor.material.color == new Color32(231, 29, 34, 255)))
                 {
                     playerColor.material.color = new Color32(141, 71, 151, 255); //purple
                 }
 
                 // red + yellow = orange
-                if ((playerColor.material.color == new Color32(231,29,34,255) && ballColor.material.color == new Color32(242, 232, 77, 255)) || (playerColor.material.color == new Color32(242, 232, 77, 255) && ballColor.material.color == new Color32(231,29,34,255)))
+                if ((playerColor.material.color == new Color32(231, 29, 34, 255) && ballColor.material.color == new Color32(242, 232, 77, 255)) || (playerColor.material.color == new Color32(242, 232, 77, 255) && ballColor.material.color == new Color32(231, 29, 34, 255)))
                 {
                     playerColor.material.color = new Color32(236, 101, 21, 255); //orange
                 }
 
                 //red + white = pink
-                if ((playerColor.material.color == new Color32(231,29,34,255) && ballColor.material.color == Color.white) || (playerColor.material.color == Color.white && ballColor.material.color == new Color32(231,29,34,255)))
+                if ((playerColor.material.color == new Color32(231, 29, 34, 255) && ballColor.material.color == Color.white) || (playerColor.material.color == Color.white && ballColor.material.color == new Color32(231, 29, 34, 255)))
                 {
                     playerColor.material.color = new Color32(244, 177, 184, 255); //pink
                 }
 
                 //blue + yellow = green
-                if ((playerColor.material.color == new Color32(0,162,231,255) && ballColor.material.color == new Color32(242, 232, 77, 255)) || (playerColor.material.color == new Color32(242, 232, 77, 255) && ballColor.material.color == new Color32(0,162,231,255)))
+                if ((playerColor.material.color == new Color32(0, 162, 231, 255) && ballColor.material.color == new Color32(242, 232, 77, 255)) || (playerColor.material.color == new Color32(242, 232, 77, 255) && ballColor.material.color == new Color32(0, 162, 231, 255)))
                 {
                     playerColor.material.color = new Color32(60, 175, 53, 255); //green
                 }
 
                 //blue + white = skyblue
-                if ((playerColor.material.color == new Color32(0,162,231,255) && ballColor.material.color == Color.white) || (playerColor.material.color == Color.white && ballColor.material.color == new Color32(0,162,231,255)))
+                if ((playerColor.material.color == new Color32(0, 162, 231, 255) && ballColor.material.color == Color.white) || (playerColor.material.color == Color.white && ballColor.material.color == new Color32(0, 162, 231, 255)))
                 {
                     playerColor.material.color = new Color32(185, 225, 235, 255); //skyblue
                 }
@@ -184,7 +205,7 @@ public class PlayerController : MonoBehaviour
             if (ballCount >= 3)
             {
                 // 3개 이상은 black
-                playerColor.material.color = new Color32(5,13,38,255);
+                playerColor.material.color = new Color32(5, 13, 38, 255);
             }
 
         }
@@ -224,22 +245,60 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision other)
     {
+        //-----------MoveSound출력----------------//
+        if (other.gameObject.CompareTag("Cube"))
+        {
+            Debug.Log("Cube");
+            this.aud.PlayOneShot(this.audMove);
+        }
+        if (other.gameObject.CompareTag("ColorCube"))
+        {
+            this.aud.PlayOneShot(this.audMove);
+        }
+        if (other.gameObject.CompareTag("Cloud"))
+        {
+            this.aud.PlayOneShot(this.audMove);
+        }
+        if (other.gameObject.CompareTag("Arrow_R"))
+        {
+            this.aud.PlayOneShot(this.audMove);
+        }
+        if (other.gameObject.CompareTag("Arrow_D"))
+        {
+            this.aud.PlayOneShot(this.audMove);
+        }
+        if (other.gameObject.CompareTag("Arrow_U"))
+        {
+            this.aud.PlayOneShot(this.audMove);
+        }
+        if (other.gameObject.CompareTag("Arrow_L"))
+        {
+            this.aud.PlayOneShot(this.audMove);
+        }
+
         //--------------------Water Enter--------------------//
         if (other.gameObject.CompareTag("Water") && ballCount > 0)
         {
             Renderer waterColor = other.gameObject.GetComponent<MeshRenderer>();
             Renderer waterdropColor = other.transform.Find("default").gameObject.GetComponent<MeshRenderer>();
-            if (waterColor.material.color != new Color32(24,133,122,255))
+            if (waterColor.material.color != new Color32(24, 133, 122, 255))
             {
+                this.aud.PlayOneShot(this.audWater); //물 타일 오염 시 효과음 재생
+
                 playerColor.material.color = Color.white;
                 ballCount = 0;
-                waterColor.material.color = new Color32(24,133,122,255);
-                waterdropColor.material.color = new Color32(5,13,38,255);
+                waterColor.material.color = new Color32(24, 133, 122, 255);
+                waterdropColor.material.color = new Color32(5, 13, 38, 255);
+                Debug.Log("RuinedWater");
+                movable[(int)(other.transform.position.x / 1.1f + 0.5f), (int)(other.transform.position.y / 1.1f + 0.5f)] = false; //오염 이후 이동 제한되어야 되는데 안됨??
+
             }
         }
         //--------------------Ice Enter--------------------//
         if (other.gameObject.CompareTag("Ice"))
         {
+            this.aud.PlayOneShot(this.audIce);
+
             Debug.Log("Ice");
             int x = (int)(targetPosition.x / 1.1f + 0.5f);
             int z = (int)(targetPosition.z / 1.1f + 0.5f);
@@ -253,27 +312,44 @@ public class PlayerController : MonoBehaviour
         }
 
         //--------------------Gate Enter--------------------//
-        if (other.gameObject.name == "Gate_green") {
-            if(playerColor.material.color == new Color32(60, 175, 53, 255) && manager.totalBallCount == 0) { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
+        if (other.gameObject.name == "Gate_green")
+        {
+            if (playerColor.material.color == new Color32(60, 175, 53, 255) && manager.totalBallCount == 0)
+            { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
+
+                this.aud.PlayOneShot(this.audClear);
+
                 Debug.Log("Next stage!!");
                 //SceneManager.LoadScene((manager.stage)+1);
                 IfClear.SetActive(true);
             }
-            else {
+            else
+            {
+
+                this.aud.PlayOneShot(this.audFail);
+
                 IfFailed.SetActive(true);
                 //ui로 retry 뜨고 재시도할 수 있게끔
-
             }
 
         }
 
-        if(other.gameObject.name == "Gate_pink") {
-            if(playerColor.material.color == new Color32(244, 177, 184, 255) && manager.totalBallCount == 0) { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
+        if (other.gameObject.name == "Gate_pink")
+        {
+            if (playerColor.material.color == new Color32(244, 177, 184, 255) && manager.totalBallCount == 0)
+            { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
+
+                this.aud.PlayOneShot(this.audClear); //클리어효과음
+
                 Debug.Log("Next stage!!");
                 //SceneManager.LoadScene((manager.stage)+1);
                 IfClear.SetActive(true);
             }
-            else {
+            else
+            {
+
+                this.aud.PlayOneShot(this.audFail); //실패효과음
+
                 IfFailed.SetActive(true);
             }
 
@@ -294,6 +370,8 @@ public class PlayerController : MonoBehaviour
         //--------------------Cloud--------------------//
         if (other.gameObject.CompareTag("Cloud"))
         {
+            this.aud.PlayOneShot(this.audCloud);
+
             Debug.Log("CloudOut");
             other.gameObject.SetActive(false);
             movable[(int)(other.transform.position.x / 1.1f + 0.5f), (int)(other.transform.position.y / 1.1f + 0.5f)] = false;
