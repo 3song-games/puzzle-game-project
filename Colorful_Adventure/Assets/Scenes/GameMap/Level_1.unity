@@ -2026,9 +2026,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1564036606}
     - target: {fileID: 4159585792471492539, guid: d7d36b3c28c27bf419eb5f1c944884f0, type: 3}
+      propertyPath: IfClear
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159585792471492539, guid: d7d36b3c28c27bf419eb5f1c944884f0, type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 1396076490}
+    - target: {fileID: 4159585792471492539, guid: d7d36b3c28c27bf419eb5f1c944884f0, type: 3}
+      propertyPath: IfFailed
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4482040679099505282, guid: d7d36b3c28c27bf419eb5f1c944884f0, type: 3}
       propertyPath: m_RootOrder
       value: 4
