@@ -10,7 +10,7 @@ public class LevelBtns : MonoBehaviour
     public void OnBtnClick() {
         switch(chooseLevel)
         {
-            case LevelType.L1btn:
+            /*case LevelType.L1btn:
                 //SceneManager.LoadScene("Level_1");
                 Debug.Log("start Level_1");
                 break;
@@ -74,10 +74,12 @@ public class LevelBtns : MonoBehaviour
             case LevelType.L20btn:
                 Debug.Log("start Level_20");
                 break;
+            */
             
             case LevelType.GotoLS2:
                 SceneManager.LoadScene("LevelScene2");
                 break;
+
             
             case LevelType.GotoLS1:
                 SceneManager.LoadScene("LevelScene1");

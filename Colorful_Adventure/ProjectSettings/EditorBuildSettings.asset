@@ -44,9 +44,36 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial/Tutorial_7.unity
     guid: 940636f0caa5c8c4ba252c8f0541fc8e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/GameMap/Level_1.unity
     guid: 5a173e9bede781542ba605452cef5dec
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_2.unity
+    guid: d60b311e64376ac49aa475202addd3e4
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_3.unity
+    guid: a5d19b34bf1ce25409d9745e1617c877
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_4.unity
+    guid: 1ef0ae2768634144e9e39b46925bdfe6
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_5.unity
+    guid: c83a579a10e1aa348a9ec6457c7574a0
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_6.unity
+    guid: 13b90c535c7334742a02df93d7687b7a
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_7.unity
+    guid: 6163fecbe9a091a46b336ea55b0fcefe
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_8.unity
+    guid: fa2cd684654b1b24daa41d89ee8ef6bf
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_9.unity
+    guid: f54840bc416387c44ac9a1240fbe6b64
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_10.unity
+    guid: 3875ac74de18e684598663ae1dd542df
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
@@ -63,26 +90,14 @@ EditorBuildSettings:
     path: Assets/Scenes/GameMap/Map1 1.unity
     guid: 32fb561842dbbb848a01f577164286e8
   - enabled: 0
-    path: Assets/Scenes/GameMap/Level_6.unity
-    guid: 13b90c535c7334742a02df93d7687b7a
-  - enabled: 0
-    path: Assets/Scenes/GameMap/Level_7.unity
-    guid: 6163fecbe9a091a46b336ea55b0fcefe
-  - enabled: 0
     path: Assets/Scenes/GameMap/Map4.unity
     guid: 4c9e41daeb3da0645a05b60a852221f1
   - enabled: 0
     path: Assets/Scenes/GameMap/Map5.unity
     guid: a4c15b641f507594c8cc869883a6c7d0
   - enabled: 0
-    path: Assets/Scenes/GameMap/Level_10.unity
-    guid: 3875ac74de18e684598663ae1dd542df
-  - enabled: 0
     path: Assets/Scenes/GameMap/Map7.unity
     guid: 5f169ed359734864ca195caffc05599f
-  - enabled: 0
-    path: Assets/Scenes/GameMap/Level_8.unity
-    guid: fa2cd684654b1b24daa41d89ee8ef6bf
   - enabled: 0
     path: Assets/Scenes/GameMap/Map9.unity
     guid: caf2a0e86acea1e42b65a5d84d88d9a1

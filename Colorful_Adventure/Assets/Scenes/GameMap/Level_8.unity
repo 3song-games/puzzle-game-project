@@ -1623,7 +1623,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalBallCount: 5
-  stage: 0
+  stage: 19
+  totalBallText: {fileID: 0}
+  playerBallText: {fileID: 0}
 --- !u!23 &1396076491
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1801,8 +1803,8 @@ Transform:
   - {fileID: 1894016309}
   - {fileID: 230945166}
   - {fileID: 2044286562}
-  - {fileID: 639262338}
   - {fileID: 1342131050}
+  - {fileID: 639262338}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

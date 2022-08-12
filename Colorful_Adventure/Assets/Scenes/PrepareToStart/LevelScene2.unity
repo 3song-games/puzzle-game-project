@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 907415e562ce26247b47f7b113d3343b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chooseLevel: 21
+  chooseLevel: 1
 --- !u!114 &499523645
 MonoBehaviour:
   m_ObjectHideFlags: 0

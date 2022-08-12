@@ -2454,7 +2454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalBallCount: 7
-  stage: 0
+  stage: 21
   totalBallText: {fileID: 0}
   playerBallText: {fileID: 0}
 --- !u!23 &1396076491
@@ -2566,19 +2566,19 @@ Transform:
   - {fileID: 507883721}
   - {fileID: 1698825679}
   - {fileID: 1338105266}
+  - {fileID: 678571720}
   - {fileID: 99917344}
+  - {fileID: 1081104957}
   - {fileID: 1201118572}
   - {fileID: 2125107312}
   - {fileID: 471522477}
-  - {fileID: 1081104957}
-  - {fileID: 678571720}
-  - {fileID: 637072734}
-  - {fileID: 1618446375}
-  - {fileID: 1664187263}
-  - {fileID: 209727742}
   - {fileID: 1133566815}
+  - {fileID: 209727742}
+  - {fileID: 1664187263}
+  - {fileID: 637072734}
   - {fileID: 722803205}
   - {fileID: 448707608}
+  - {fileID: 1618446375}
   - {fileID: 225989870}
   - {fileID: 1172676882}
   - {fileID: 1050797948}

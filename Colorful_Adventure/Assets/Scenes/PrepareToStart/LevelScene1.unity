@@ -326,7 +326,6 @@ GameObject:
   - component: {fileID: 171588983}
   - component: {fileID: 171588982}
   - component: {fileID: 171588981}
-  - component: {fileID: 171588980}
   m_Layer: 5
   m_Name: L4Btn
   m_TagString: Untagged
@@ -354,19 +353,6 @@ RectTransform:
   m_AnchoredPosition: {x: 400, y: 0}
   m_SizeDelta: {x: 230, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &171588980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171588978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 907415e562ce26247b47f7b113d3343b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chooseLevel: 3
 --- !u!114 &171588981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,14 +397,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 171588980}
-        m_TargetAssemblyTypeName: LevelBtns, Assembly-CSharp
-        m_MethodName: OnBtnClick
-        m_Mode: 1
+      - m_Target: {fileID: 1172582597}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 15
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -473,7 +459,6 @@ GameObject:
   - component: {fileID: 604181754}
   - component: {fileID: 604181753}
   - component: {fileID: 604181752}
-  - component: {fileID: 604181751}
   m_Layer: 5
   m_Name: L9Btn
   m_TagString: Untagged
@@ -501,19 +486,6 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: -300}
   m_SizeDelta: {x: 230, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &604181751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 604181749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 907415e562ce26247b47f7b113d3343b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chooseLevel: 8
 --- !u!114 &604181752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,14 +530,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 604181751}
-        m_TargetAssemblyTypeName: LevelBtns, Assembly-CSharp
-        m_MethodName: OnBtnClick
-        m_Mode: 1
+      - m_Target: {fileID: 1172582597}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 20
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -693,7 +665,6 @@ GameObject:
   - component: {fileID: 649809328}
   - component: {fileID: 649809327}
   - component: {fileID: 649809326}
-  - component: {fileID: 649809329}
   m_Layer: 5
   m_Name: L1Btn
   m_TagString: Untagged
@@ -765,14 +736,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 649809329}
-        m_TargetAssemblyTypeName: LevelBtns, Assembly-CSharp
-        m_MethodName: OnBtnClick
-        m_Mode: 1
+      - m_Target: {fileID: 1172582597}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 12
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -815,19 +786,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649809324}
   m_CullTransparentMesh: 1
---- !u!114 &649809329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649809324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 907415e562ce26247b47f7b113d3343b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chooseLevel: 0
 --- !u!1 &897782567
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,7 +892,6 @@ GameObject:
   - component: {fileID: 940361529}
   - component: {fileID: 940361528}
   - component: {fileID: 940361527}
-  - component: {fileID: 940361526}
   m_Layer: 5
   m_Name: L10Btn
   m_TagString: Untagged
@@ -962,19 +919,6 @@ RectTransform:
   m_AnchoredPosition: {x: 400, y: -300}
   m_SizeDelta: {x: 230, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &940361526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940361524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 907415e562ce26247b47f7b113d3343b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chooseLevel: 9
 --- !u!114 &940361527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1019,14 +963,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 940361526}
-        m_TargetAssemblyTypeName: LevelBtns, Assembly-CSharp
-        m_MethodName: OnBtnClick
-        m_Mode: 1
+      - m_Target: {fileID: 1172582597}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 21
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1081,7 +1025,6 @@ GameObject:
   - component: {fileID: 1119296715}
   - component: {fileID: 1119296714}
   - component: {fileID: 1119296713}
-  - component: {fileID: 1119296712}
   m_Layer: 5
   m_Name: L3Btn
   m_TagString: Untagged
@@ -1109,19 +1052,6 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: 0}
   m_SizeDelta: {x: 230, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1119296712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1119296710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 907415e562ce26247b47f7b113d3343b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chooseLevel: 2
 --- !u!114 &1119296713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1166,14 +1096,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1119296712}
-        m_TargetAssemblyTypeName: LevelBtns, Assembly-CSharp
-        m_MethodName: OnBtnClick
-        m_Mode: 1
+      - m_Target: {fileID: 1172582597}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 14
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1229,6 +1159,7 @@ GameObject:
   - component: {fileID: 1172582593}
   - component: {fileID: 1172582592}
   - component: {fileID: 1172582596}
+  - component: {fileID: 1172582597}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1332,6 +1263,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 840c214019508314c88c21283ac2abe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1172582597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172582591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092934364b2484d4780d30d5fe0fa4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 649809326}
+  - {fileID: 1871131200}
+  - {fileID: 1119296713}
+  - {fileID: 171588981}
+  - {fileID: 1684985573}
+  - {fileID: 1499875930}
+  - {fileID: 1847913827}
+  - {fileID: 1669120119}
+  - {fileID: 604181752}
+  - {fileID: 940361527}
 --- !u!1 &1450922598
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,7 +1382,6 @@ GameObject:
   - component: {fileID: 1499875932}
   - component: {fileID: 1499875931}
   - component: {fileID: 1499875930}
-  - component: {fileID: 1499875929}
   m_Layer: 5
   m_Name: L6Btn
   m_TagString: Untagged
@@ -1456,19 +1409,6 @@ RectTransform:
   m_AnchoredPosition: {x: -800, y: -300}
   m_SizeDelta: {x: 230, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1499875929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499875927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 907415e562ce26247b47f7b113d3343b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chooseLevel: 5
 --- !u!114 &1499875930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1513,14 +1453,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1499875929}
-        m_TargetAssemblyTypeName: LevelBtns, Assembly-CSharp
-        m_MethodName: OnBtnClick
-        m_Mode: 1
+      - m_Target: {fileID: 1172582597}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 17
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1575,7 +1515,6 @@ GameObject:
   - component: {fileID: 1669120121}
   - component: {fileID: 1669120120}
   - component: {fileID: 1669120119}
-  - component: {fileID: 1669120118}
   m_Layer: 5
   m_Name: L8Btn
   m_TagString: Untagged
@@ -1603,19 +1542,6 @@ RectTransform:
   m_AnchoredPosition: {x: -200, y: -300}
   m_SizeDelta: {x: 230, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1669120118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669120116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 907415e562ce26247b47f7b113d3343b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chooseLevel: 7
 --- !u!114 &1669120119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1660,14 +1586,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1669120118}
-        m_TargetAssemblyTypeName: LevelBtns, Assembly-CSharp
-        m_MethodName: OnBtnClick
-        m_Mode: 1
+      - m_Target: {fileID: 1172582597}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 19
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1722,7 +1648,6 @@ GameObject:
   - component: {fileID: 1684985575}
   - component: {fileID: 1684985574}
   - component: {fileID: 1684985573}
-  - component: {fileID: 1684985572}
   m_Layer: 5
   m_Name: L5Btn
   m_TagString: Untagged
@@ -1750,19 +1675,6 @@ RectTransform:
   m_AnchoredPosition: {x: 700, y: 0}
   m_SizeDelta: {x: 230, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1684985572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684985570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 907415e562ce26247b47f7b113d3343b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chooseLevel: 4
 --- !u!114 &1684985573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1807,14 +1719,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1684985572}
-        m_TargetAssemblyTypeName: LevelBtns, Assembly-CSharp
-        m_MethodName: OnBtnClick
-        m_Mode: 1
+      - m_Target: {fileID: 1172582597}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 16
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1869,7 +1781,6 @@ GameObject:
   - component: {fileID: 1847913829}
   - component: {fileID: 1847913828}
   - component: {fileID: 1847913827}
-  - component: {fileID: 1847913826}
   m_Layer: 5
   m_Name: L7Btn
   m_TagString: Untagged
@@ -1897,19 +1808,6 @@ RectTransform:
   m_AnchoredPosition: {x: -500, y: -300}
   m_SizeDelta: {x: 230, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1847913826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1847913824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 907415e562ce26247b47f7b113d3343b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chooseLevel: 6
 --- !u!114 &1847913827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1954,14 +1852,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1847913826}
-        m_TargetAssemblyTypeName: LevelBtns, Assembly-CSharp
-        m_MethodName: OnBtnClick
-        m_Mode: 1
+      - m_Target: {fileID: 1172582597}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 18
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2016,7 +1914,6 @@ GameObject:
   - component: {fileID: 1871131202}
   - component: {fileID: 1871131201}
   - component: {fileID: 1871131200}
-  - component: {fileID: 1871131199}
   m_Layer: 5
   m_Name: L2Btn
   m_TagString: Untagged
@@ -2044,19 +1941,6 @@ RectTransform:
   m_AnchoredPosition: {x: -200, y: 0}
   m_SizeDelta: {x: 230, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1871131199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871131197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 907415e562ce26247b47f7b113d3343b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chooseLevel: 1
 --- !u!114 &1871131200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2101,14 +1985,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1871131199}
-        m_TargetAssemblyTypeName: LevelBtns, Assembly-CSharp
-        m_MethodName: OnBtnClick
-        m_Mode: 1
+      - m_Target: {fileID: 1172582597}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 13
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2203,7 +2087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 907415e562ce26247b47f7b113d3343b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chooseLevel: 20
+  chooseLevel: 0
 --- !u!114 &1923426828
 MonoBehaviour:
   m_ObjectHideFlags: 0
