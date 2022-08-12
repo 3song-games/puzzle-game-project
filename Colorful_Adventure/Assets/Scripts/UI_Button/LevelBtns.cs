@@ -75,8 +75,12 @@ public class LevelBtns : MonoBehaviour
                 Debug.Log("start Level_20");
                 break;
             
-            case LevelType.BacktoMainMenu:
-                SceneManager.LoadScene("MainMenu");
+            case LevelType.GotoLS2:
+                SceneManager.LoadScene("LevelScene2");
+                break;
+            
+            case LevelType.GotoLS1:
+                SceneManager.LoadScene("LevelScene1");
                 break;
         }
     }

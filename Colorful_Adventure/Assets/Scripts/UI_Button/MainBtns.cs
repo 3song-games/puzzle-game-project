@@ -18,7 +18,7 @@ public class MainBtns : MonoBehaviour {
         {
             case BTNType.GameStart:
                 Debug.Log("and then choose the level");
-                SceneManager.LoadScene("LevelScene");
+                SceneManager.LoadScene("LevelScene1");
                 break;
             
 

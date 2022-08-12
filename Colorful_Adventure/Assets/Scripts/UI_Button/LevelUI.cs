@@ -9,7 +9,7 @@ public enum LevelType {
         L11btn, L12btn, L13btn, L14btn, L15btn,
         L16btn, L17btn, L18btn, L19btn, L20btn,
 
-        BacktoMainMenu
+        GotoLS2, GotoLS1,
         
     }
 public class LevelUI : MonoBehaviour
