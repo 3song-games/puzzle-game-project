@@ -41,6 +41,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial/Tutorial_7.unity
     guid: 940636f0caa5c8c4ba252c8f0541fc8e
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_1.unity
+    guid: 5a173e9bede781542ba605452cef5dec
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
@@ -69,7 +72,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GameMap/Map5.unity
     guid: a4c15b641f507594c8cc869883a6c7d0
   - enabled: 0
-    path: Assets/Scenes/GameMap/Level_9.unity
+    path: Assets/Scenes/GameMap/Level_10.unity
     guid: 3875ac74de18e684598663ae1dd542df
   - enabled: 0
     path: Assets/Scenes/GameMap/Map7.unity

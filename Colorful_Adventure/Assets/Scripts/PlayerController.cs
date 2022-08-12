@@ -95,6 +95,17 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+            if (MapArr[i].transform.CompareTag("Gate"))
+            {
+                int x = (int)(MapArr[i].transform.position.x / 1.1f + 0.5f);
+                int z = (int)(MapArr[i].transform.position.z / 1.1f + 0.5f);
+                movable[x, z] = true;
+                if (playerColor.material.color != MapArr[i].transform.Find("default").gameObject.GetComponent<MeshRenderer>().material.color) 
+                {
+                    movable[x, z] = false;
+                }
+
+            }
         }
     }
 
@@ -320,32 +331,10 @@ public class PlayerController : MonoBehaviour
         }
 
         //--------------------Gate Enter--------------------//
-        if (other.gameObject.name == "Gate_green")
+        if (other.gameObject.CompareTag("Gate"))
         {
-            if (playerColor.material.color == new Color32(60, 175, 53, 255) && manager.totalBallCount == 0)
-            { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
-
-                this.aud.PlayOneShot(this.audClear);
-
-                Debug.Log("Next stage!!");
-                //SceneManager.LoadScene((manager.stage)+1);
-                IfClear.SetActive(true);
-            }
-            else
+            if (playerColor.material.color == other.transform.Find("default").gameObject.GetComponent<MeshRenderer>().material.color && manager.totalBallCount == 0)
             {
-
-                this.aud.PlayOneShot(this.audFail);
-
-                IfFailed.SetActive(true);
-                //ui로 retry 뜨고 재시도할 수 있게끔
-            }
-
-        }
-
-        if (other.gameObject.name == "Gate_pink")
-        {
-            if (playerColor.material.color == new Color32(244, 177, 184, 255) && manager.totalBallCount == 0)
-            { // & 조건 하나 더 추가- 색방울 모두 흡수 여부 (최종 갯수와 일치하는지 여부)
 
                 this.aud.PlayOneShot(this.audClear); //클리어효과음
 
@@ -353,12 +342,17 @@ public class PlayerController : MonoBehaviour
                 //SceneManager.LoadScene((manager.stage)+1);
                 IfClear.SetActive(true);
             }
-            else
+            else if (playerColor.material.color == other.transform.Find("default").gameObject.GetComponent<MeshRenderer>().material.color && manager.totalBallCount != 0)
             {
 
                 this.aud.PlayOneShot(this.audFail); //실패효과음
 
                 IfFailed.SetActive(true);
+            }
+
+            else if (playerColor.material.color != other.transform.Find("default").gameObject.GetComponent<MeshRenderer>().material.color)
+            {
+                movable[(int)(other.transform.position.x / 1.1f + 0.5f), (int)(other.transform.position.y / 1.1f + 0.5f)] = false;
             }
 
         }

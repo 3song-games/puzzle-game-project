@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3737020354678774777}
   m_Layer: 0
   m_Name: Gate_pink
-  m_TagString: Untagged
+  m_TagString: Gate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
