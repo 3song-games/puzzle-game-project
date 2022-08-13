@@ -165,14 +165,14 @@ MonoBehaviour:
   ballCount: 0
   IfClear: {fileID: 0}
   IfFailed: {fileID: 0}
-  audMove: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
-  audBlock: {fileID: 8300000, guid: dc6614beca09347ec9b258f12d154bdd, type: 3}
-  audWater: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
-  audCloud: {fileID: 8300000, guid: c5e2a73ad4706440f93bf05df0b465fe, type: 3}
-  audIce: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
-  audClear: {fileID: 8300000, guid: a235d590ef2a04d1b85b61ef4c21337c, type: 3}
-  audFail: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
-  audColorBall: {fileID: 8300000, guid: 4e1ff8faed12a475eba9be0e46072269, type: 3}
+  audMove: {fileID: 8300000, guid: 80701e1dd1041584d8b4c61de2fd2850, type: 3}
+  audBlock: {fileID: 8300000, guid: b43d102aac6b145468dcaa94a5cccae1, type: 3}
+  audWater: {fileID: 8300000, guid: 52a02f5181ad2db4badb774400aa0424, type: 3}
+  audCloud: {fileID: 8300000, guid: 31cae5abd22cee6499d40b26a9817944, type: 3}
+  audIce: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+  audClear: {fileID: 8300000, guid: c95f3d608a38a8a408be3c694f230874, type: 3}
+  audFail: {fileID: 8300000, guid: dc6614beca09347ec9b258f12d154bdd, type: 3}
+  audColorBall: {fileID: 8300000, guid: 1aa60a98f3090aa44a56a363411b351e, type: 3}
 --- !u!82 &1412755088236031518
 AudioSource:
   m_ObjectHideFlags: 0
