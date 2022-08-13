@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip audBlock; //막힐 때 효과음
     public AudioClip audWater; //물타일 enter 효과음
     public AudioClip audCloud; //구름 exit 효과음
-    public AudioClip audIce; //얼음 enter 효과음
+    public AudioClip audIce; //얼음 enter, exit 효과음
     public AudioClip audClear; //스테이지 클리어 시 효과음
     public AudioClip audFail; //스테이지 실패 시 효과음
     public AudioClip audColorBall; //색방울 흡수 시 효과음
@@ -134,10 +134,10 @@ public class PlayerController : MonoBehaviour
             //얼음 너무 빨리 움직일 때
             if (Mathf.Abs(transform.position.x - targetPosition.x) > 1.5f || Mathf.Abs(transform.position.z - targetPosition.z) > 1.5f)
             {
-                speed = 0.04f;
+                speed = 0.08f;
                 Debug.Log("slow");
             }
-            else speed = 0.15f;
+            else speed = 0.4f;
             transform.position = Vector3.Lerp(transform.position, targetPosition, speed);
         }
         //--------------------Movement--------------------//
@@ -388,5 +388,21 @@ public class PlayerController : MonoBehaviour
                 movable[(int)(other.transform.position.x / 1.1f + 0.5f), (int)(other.transform.position.y / 1.1f + 0.5f)] = false;
             }
         }
-}
+        //--------------------Ice Exit--------------------//
+        if (other.gameObject.CompareTag("Ice"))
+        {
+            this.aud.PlayOneShot(this.audIce);
+
+            Debug.Log("Ice");
+            int x = (int)(targetPosition.x / 1.1f + 0.5f);
+            int z = (int)(targetPosition.z / 1.1f + 0.5f);
+            while (true)
+            {
+                x += (int)premove.x;
+                z += (int)premove.z;
+                if (movable[x, z]) targetPosition += premove;
+                else break;
+            }
+        }
+    }
 }
