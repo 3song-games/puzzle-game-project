@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private bool[,] movable = new bool[100, 100]; // 움직일 수 있는 좌표평면(Map)
 
     public GameManagerLogic manager;
+    public LevelScript IFCLEAR_popup;
     public GameObject GetMap;
     private Transform[] MapArr;
 
@@ -341,6 +342,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Next stage!!");
                 //SceneManager.LoadScene((manager.stage)+1);
                 IfClear.SetActive(true);
+                IFCLEAR_popup.Pass();
             }
             else if (playerColor.material.color == other.transform.Find("default").gameObject.GetComponent<MeshRenderer>().material.color && manager.totalBallCount != 0)
             {

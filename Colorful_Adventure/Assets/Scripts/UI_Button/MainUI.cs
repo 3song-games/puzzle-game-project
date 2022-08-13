@@ -15,7 +15,7 @@ public enum BTNType {
 
     //ifclear
     Continue, //gotoNextStage
-    BacktoMainMenu
+    BacktoMainMenu,
 
 
 }

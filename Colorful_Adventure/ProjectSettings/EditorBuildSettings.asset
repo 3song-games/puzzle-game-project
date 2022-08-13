@@ -74,31 +74,46 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameMap/Level_10.unity
     guid: 3875ac74de18e684598663ae1dd542df
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/GameMap/Map1 1.unity
-    guid: 32fb561842dbbb848a01f577164286e8
-  - enabled: 0
-    path: Assets/Scenes/GameMap/Map4.unity
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_11.unity
+    guid: 4c18e64d57f1cbb4aa791e4f72288e4e
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_12.unity
+    guid: f25d1a632ba2cc84986fc4c7cfff124b
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_13.unity
     guid: 4c9e41daeb3da0645a05b60a852221f1
-  - enabled: 0
-    path: Assets/Scenes/GameMap/Map5.unity
-    guid: a4c15b641f507594c8cc869883a6c7d0
-  - enabled: 0
-    path: Assets/Scenes/GameMap/Map7.unity
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_14.unity
+    guid: a187b1bc27edc0847bb99686a1180fe8
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_15.unity
+    guid: 9797311081cd8454798ad187efa71493
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_16.unity
+    guid: 96016ed1a0091fd4bbabfad130a4ecd3
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_17.unity
     guid: 5f169ed359734864ca195caffc05599f
-  - enabled: 0
-    path: Assets/Scenes/GameMap/Map9.unity
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_18.unity
+    guid: a4c15b641f507594c8cc869883a6c7d0
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_19.unity
+    guid: 32fb561842dbbb848a01f577164286e8
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Level_20.unity
     guid: caf2a0e86acea1e42b65a5d84d88d9a1
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
