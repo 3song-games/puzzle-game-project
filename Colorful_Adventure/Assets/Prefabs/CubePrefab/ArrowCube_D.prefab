@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 8105756891873362040}
   m_Layer: 0
   m_Name: ArrowCube_D
-  m_TagString: Arrow_R
+  m_TagString: Arrow_D
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

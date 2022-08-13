@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9156031963475511948}
   m_Layer: 0
   m_Name: ArrowCube_U
-  m_TagString: Arrow_R
+  m_TagString: Arrow_U
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
