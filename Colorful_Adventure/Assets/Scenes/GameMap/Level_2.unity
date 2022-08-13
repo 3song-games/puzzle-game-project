@@ -1918,7 +1918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755b5112b4ac9444b8713210bbe9f989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalBallCount: 5
+  totalBallCount: 8
   stage: 13
   totalBallText: {fileID: 1388973899}
   playerBallText: {fileID: 1388973898}
