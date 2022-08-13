@@ -1871,16 +1871,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1756281634}
+  - {fileID: 357639053}
+  - {fileID: 832972381}
+  - {fileID: 1780954079}
+  - {fileID: 1149710522}
+  - {fileID: 332853431}
+  - {fileID: 768529043}
+  - {fileID: 27649393}
+  - {fileID: 1793567808}
+  - {fileID: 1227813135}
 --- !u!1 &1756281631
 GameObject:
   m_ObjectHideFlags: 0
