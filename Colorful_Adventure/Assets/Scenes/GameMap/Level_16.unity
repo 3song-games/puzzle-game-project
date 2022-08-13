@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalBallCount: 4
-  stage: 0
+  stage: 27
   totalBallText: {fileID: 0}
   playerBallText: {fileID: 0}
 --- !u!23 &1396076491
@@ -2183,8 +2183,8 @@ Transform:
   - {fileID: 42466313}
   - {fileID: 1210204506}
   - {fileID: 1788433609}
-  - {fileID: 1030076446}
   - {fileID: 1463004047}
+  - {fileID: 1030076446}
   - {fileID: 509053396}
   - {fileID: 661522618}
   m_Father: {fileID: 0}

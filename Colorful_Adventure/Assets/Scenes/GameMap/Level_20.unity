@@ -3329,7 +3329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalBallCount: 7
-  stage: 0
+  stage: 31
   totalBallText: {fileID: 0}
   playerBallText: {fileID: 0}
 --- !u!23 &1396076491
@@ -3723,14 +3723,14 @@ Transform:
   - {fileID: 482636907}
   - {fileID: 1432409399}
   - {fileID: 752161959}
-  - {fileID: 724360349}
   - {fileID: 719091255}
+  - {fileID: 724360349}
+  - {fileID: 124079527}
+  - {fileID: 15890092}
   - {fileID: 956827795}
+  - {fileID: 631683938}
   - {fileID: 702923645}
   - {fileID: 71345712}
-  - {fileID: 15890092}
-  - {fileID: 631683938}
-  - {fileID: 124079527}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

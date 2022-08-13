@@ -1384,9 +1384,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 442701082}
-  - {fileID: 543450652381172721}
   - {fileID: 163108578}
   - {fileID: 212990106}
+  - {fileID: 543450652381172721}
   - {fileID: 442432730}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1499,7 +1499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalBallCount: 5
-  stage: 0
+  stage: 23
   totalBallText: {fileID: 0}
   playerBallText: {fileID: 0}
 --- !u!23 &1396076491
