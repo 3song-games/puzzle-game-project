@@ -394,5 +394,11 @@ public class PlayerController : MonoBehaviour
                 else break;
             }
         }
+        if (other.gameObject.CompareTag("ColorBall Cube"))
+        {
+            Debug.Log("ColorBall on Cube");
+            other.gameObject.tag = "Cube";
+        }
+        //색방울 타일에서 색방울이 없어진 뒤 기존 큐브로 변경
     }
 }

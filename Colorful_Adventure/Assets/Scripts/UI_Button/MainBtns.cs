@@ -60,6 +60,7 @@ public class MainBtns : MonoBehaviour {
                 GetComponent<AudioSource>().Play();
                 break;
 
+
         }
     }
 

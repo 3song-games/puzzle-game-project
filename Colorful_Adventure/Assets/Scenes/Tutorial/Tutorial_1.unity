@@ -165,6 +165,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1987296813481195882, guid: 4c9b91fc2c9e2ed43905fc74d35175ed, type: 3}
+      propertyPath: m_TagString
+      value: ColorBall Cube
+      objectReference: {fileID: 0}
     - target: {fileID: 3837817717414604110, guid: 4c9b91fc2c9e2ed43905fc74d35175ed, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -435,6 +439,10 @@ PrefabInstance:
     - target: {fileID: 1987296813481195882, guid: 4c9b91fc2c9e2ed43905fc74d35175ed, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987296813481195882, guid: 4c9b91fc2c9e2ed43905fc74d35175ed, type: 3}
+      propertyPath: m_TagString
+      value: ColorBall Cube
       objectReference: {fileID: 0}
     - target: {fileID: 3837817717414604110, guid: 4c9b91fc2c9e2ed43905fc74d35175ed, type: 3}
       propertyPath: m_RootOrder
