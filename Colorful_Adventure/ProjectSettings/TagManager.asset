@@ -17,6 +17,7 @@ TagManager:
   - CheckPoint
   - Cube
   - Gate
+  - ColorBall Cube
   layers:
   - Default
   - TransparentFX
