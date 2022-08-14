@@ -77,12 +77,14 @@ public class LevelBtns : MonoBehaviour
             */
             
             case LevelType.GotoLS2:
+                GetComponent<AudioSource>().Play();
                 SceneManager.LoadScene("LevelScene2");
                 break;
 
             
             case LevelType.GotoLS1:
                 SceneManager.LoadScene("LevelScene1");
+                GetComponent<AudioSource>().Play();
                 break;
         }
     }

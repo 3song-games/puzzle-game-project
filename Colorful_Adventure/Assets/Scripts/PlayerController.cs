@@ -178,7 +178,8 @@ public class PlayerController : MonoBehaviour
             finalGetBall += 1;
             manager.GetBall(finalGetBall);
 
-            this.aud.PlayOneShot(this.audColorBall); //흡수 효과음
+            this.aud.PlayOneShot(this.audColorBall);//흡수 효과음
+            this.aud.volume = 1.0f;
 
             if (ballCount == 1)
             {
@@ -270,37 +271,21 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         //-----------MoveSound출력----------------//
-        if (other.gameObject.CompareTag("Cube"))
+        if (other.gameObject.CompareTag("Cube") || other.gameObject.CompareTag("ColorCube") || other.gameObject.CompareTag("Cloud"))
         {
-            Debug.Log("Cube");
-            this.aud.PlayOneShot(this.audMove);
-        }
-        if (other.gameObject.CompareTag("ColorCube"))
-        {
-            this.aud.PlayOneShot(this.audMove);
-        }
-        if (other.gameObject.CompareTag("Cloud"))
-        {
-            this.aud.PlayOneShot(this.audMove);
-        }
-        if (other.gameObject.CompareTag("Arrow_R"))
-        {
-            this.aud.PlayOneShot(this.audMove);
-        }
-        if (other.gameObject.CompareTag("Arrow_D"))
-        {
-            this.aud.PlayOneShot(this.audMove);
-        }
-        if (other.gameObject.CompareTag("Arrow_U"))
-        {
-            this.aud.PlayOneShot(this.audMove);
-        }
-        if (other.gameObject.CompareTag("Arrow_L"))
-        {
-            this.aud.PlayOneShot(this.audMove);
-        }
 
-        //--------------------Water Enter--------------------//
+            this.aud.PlayOneShot(this.audMove);
+            this.aud.volume = 0.3f;
+        }
+        
+        if (other.gameObject.CompareTag("Arrow_R") || other.gameObject.CompareTag("Arrow_D") || other.gameObject.CompareTag("Arrow_U") || other.gameObject.CompareTag("Arrow_L"))
+        {
+            this.aud.PlayOneShot(this.audMove);
+            this.aud.volume = 0.3f;
+        }
+        
+
+        //--------------------Water Enter--------------------/
         if (other.gameObject.CompareTag("Water"))
         {
             Renderer waterColor = other.gameObject.GetComponent<MeshRenderer>();
@@ -308,7 +293,9 @@ public class PlayerController : MonoBehaviour
             if (waterColor.material.color != new Color32(24, 133, 122, 255) && ballCount > 0)
             {
                 ballCount = 0;
+
                 this.aud.PlayOneShot(this.audWater); //물 타일 오염 시 효과음 재생
+
                 waterdropColor.material.color = new Color32(5, 13, 38, 255);
                 playerColor.material.color = Color.white;
                 Debug.Log("RuinedWater");

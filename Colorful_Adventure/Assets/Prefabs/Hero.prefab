@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  IFCLEAR_popup: {fileID: 0}
   GetMap: {fileID: 0}
   ballCount: 0
   IfClear: {fileID: 0}
@@ -168,7 +169,7 @@ MonoBehaviour:
   audMove: {fileID: 8300000, guid: 80701e1dd1041584d8b4c61de2fd2850, type: 3}
   audBlock: {fileID: 8300000, guid: b43d102aac6b145468dcaa94a5cccae1, type: 3}
   audWater: {fileID: 8300000, guid: 52a02f5181ad2db4badb774400aa0424, type: 3}
-  audCloud: {fileID: 8300000, guid: 31cae5abd22cee6499d40b26a9817944, type: 3}
+  audCloud: {fileID: 8300000, guid: 0f814f183b4a99f408a05180b6403052, type: 3}
   audIce: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   audClear: {fileID: 8300000, guid: c95f3d608a38a8a408be3c694f230874, type: 3}
   audFail: {fileID: 8300000, guid: dc6614beca09347ec9b258f12d154bdd, type: 3}
