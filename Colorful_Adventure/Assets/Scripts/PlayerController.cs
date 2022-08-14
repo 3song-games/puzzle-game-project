@@ -387,7 +387,8 @@ public class PlayerController : MonoBehaviour
             Renderer waterdropColor = other.transform.Find("default").gameObject.GetComponent<MeshRenderer>();
             if (waterdropColor.material.color == new Color32(5, 13, 38, 255)) {
                 waterColor.material.color = new Color32(24, 133, 122, 255);
-                movable[(int)(other.transform.position.x / 1.1f + 0.5f), (int)(other.transform.position.y / 1.1f + 0.5f)] = false;
+                //movable[(int)(other.transform.position.x / 1.1f + 0.5f), (int)(other.transform.position.y / 1.1f + 0.5f)] = false;
+                //윗 주석문의 코드가 문제였던 듯!
             }
         }
         //--------------------Ice Exit--------------------//
