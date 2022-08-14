@@ -72,30 +72,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (MapArr[i].transform.CompareTag("Cloud"))
-            {
-                int x = (int)(MapArr[i].transform.position.x / 1.1f + 0.5f);
-                int z = (int)(MapArr[i].transform.position.z / 1.1f + 0.5f);
-                movable[x, z] = true; // 기본적으로는 구름타일 pass 가능
-                if (MapArr[i].gameObject.activeSelf == false)
-                // 이미 지나간 후의 구름타일(비활성화 ver.)
-                {
-                    movable[x, z] = false; // cannot pass
-                }
-            }
-
-            if (MapArr[i].transform.CompareTag("Water"))
-            {
-                int x = (int)(MapArr[i].transform.position.x / 1.1f + 0.5f);
-                int z = (int)(MapArr[i].transform.position.z / 1.1f + 0.5f);
-                movable[x, z] = true;
-                if (MapArr[i].gameObject.GetComponent<Renderer>().material.color == new Color32(24,133,122,255))
-                // 1회 사용 후 오염된 watercube
-                {
-                    movable[x, z] = false; // cannot pass
-                }
-            }
-
             if (MapArr[i].transform.CompareTag("Gate"))
             {
                 int x = (int)(MapArr[i].transform.position.x / 1.1f + 0.5f);
@@ -365,17 +341,20 @@ public class PlayerController : MonoBehaviour
 
             Debug.Log("CloudOut");
             other.gameObject.SetActive(false);
-            movable[(int)(other.transform.position.x / 1.1f + 0.5f), (int)(other.transform.position.y / 1.1f + 0.5f)] = false;
+            int x = (int)(other.transform.position.x / 1.1f + 0.5f);
+            int z = (int)(other.transform.position.z / 1.1f + 0.5f);
+            movable[x, z] = false; // 구름타일로 이제 움직일 수 없음
         }
-
+        //--------------------Water Exit--------------------//
         if (other.gameObject.CompareTag("Water"))
         {
             Renderer waterColor = other.gameObject.GetComponent<MeshRenderer>();
             Renderer waterdropColor = other.transform.Find("default").gameObject.GetComponent<MeshRenderer>();
             if (waterdropColor.material.color == new Color32(5, 13, 38, 255)) {
                 waterColor.material.color = new Color32(24, 133, 122, 255);
-                //movable[(int)(other.transform.position.x / 1.1f + 0.5f), (int)(other.transform.position.y / 1.1f + 0.5f)] = false;
-                //윗 주석문의 코드가 문제였던 듯!
+                int x = (int)(other.transform.position.x / 1.1f + 0.5f);
+                int z = (int)(other.transform.position.z / 1.1f + 0.5f);
+                movable[x, z] = false; // 물타일로 이제 움직일 수 없음
             }
         }
         //--------------------Ice Exit--------------------//
