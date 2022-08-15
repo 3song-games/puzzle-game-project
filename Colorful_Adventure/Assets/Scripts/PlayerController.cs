@@ -18,10 +18,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 premove, targetPosition;
     public int ballCount; // 현재 먹은 색방울의 개수 (물방울타일 영향 받)
     private int finalGetBall; // UI 표시용. 플레이어가 get한 색방울 갯수 누적ver.
-    public int GetBall()
-    {
-        return finalGetBall;
-    }
 
     public GameObject IfClear; // 관문 통과 성공 시 성공 팝업창 활성화
 
