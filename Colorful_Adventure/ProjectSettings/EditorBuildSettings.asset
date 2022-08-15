@@ -116,4 +116,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/GameMap/Ending.unity
+    guid: d3e5195855a2c6a47b9a2a8b20870ccd
   m_configObjects: {}
