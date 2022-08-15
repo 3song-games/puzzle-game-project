@@ -292,6 +292,11 @@ public class PlayerController : MonoBehaviour
                 playerColor.material.color = Color.white;
                 Debug.Log("RuinedWater");
             }
+            else
+            {
+                this.aud.PlayOneShot(this.audMove); //씻겨지지 않을 때는 move효과음 재생
+                this.aud.volume = 0.3f;
+            }
         }
         //--------------------Ice Enter--------------------//
         if (other.gameObject.CompareTag("Ice"))
