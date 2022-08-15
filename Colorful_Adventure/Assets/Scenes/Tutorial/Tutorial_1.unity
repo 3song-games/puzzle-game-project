@@ -1583,11 +1583,23 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 1396076494}
+    - target: {fileID: 8453105752838651323, guid: a70c6738dfea2ed47ae139d9e87327d9, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 1396076494}
+    - target: {fileID: 8453105752873444433, guid: a70c6738dfea2ed47ae139d9e87327d9, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 1396076494}
     - target: {fileID: 8453105753055706558, guid: a70c6738dfea2ed47ae139d9e87327d9, type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 1396076494}
     - target: {fileID: 8453105753085740605, guid: a70c6738dfea2ed47ae139d9e87327d9, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 1396076494}
+    - target: {fileID: 8453105753640606210, guid: a70c6738dfea2ed47ae139d9e87327d9, type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 1396076494}
