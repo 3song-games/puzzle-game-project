@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class IntroManager : MonoBehaviour
 {
-    [SerializeField] Image backscene, logo = null;
+    [SerializeField] Image backscene, logo, mission = null;
     [SerializeField] Slider silder = null;
     [SerializeField] TextMeshProUGUI text_percentage = null;
 
@@ -21,7 +21,7 @@ public class IntroManager : MonoBehaviour
         time_current = time_loading;
         time_start = Time.time;
         Set_FillAmount(0);
-        StartCoroutine(FadeToFull(3.0f, backscene, logo));
+        StartCoroutine(FadeToFull(1.5f, backscene, logo, mission));
     }
 
     // Update is called once per frame
@@ -30,16 +30,10 @@ public class IntroManager : MonoBehaviour
         Check_Loading();
     }
 
-    public IEnumerator FadeToFull(float t, Image i, Image j) {
-        i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
-        j.color = new Color(j.color.r, j.color.g, j.color.b, 0);
-
-        while (i.color.a < 1.0f) {
-            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime/t));
-            yield return null;
-        }
-
+    public IEnumerator FadeToFull(float t, Image i, Image j, Image z) {
         i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
+        j.color = new Color(j.color.r, j.color.g, j.color.b, 0);
+        z.color = new Color(z.color.r, z.color.g, z.color.b, 0);
 
         /*while (i.color.a > 0.0f) {
             i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime/t));
@@ -56,6 +50,13 @@ public class IntroManager : MonoBehaviour
             j.color = new Color(j.color.r, j.color.g, j.color.b, j.color.a - (Time.deltaTime / t));
             yield return null;
         }
+        j.color = new Color(j.color.r, j.color.g, j.color.b, 0);
+
+        while (z.color.a < 1.0f) {
+            z.color = new Color(z.color.r, z.color.g, z.color.b, z.color.a + (Time.deltaTime / t));
+            yield return null;
+        }
+        z.color = new Color(z.color.r, z.color.g, z.color.b, 1);
     }
 
     private void Check_Loading() {
