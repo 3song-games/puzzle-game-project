@@ -220,6 +220,10 @@ public class PlayerController : MonoBehaviour
             CanGoDown = false;
             CanGoLeft = false;
             CanGoRight = false;
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.DownArrow))
+            {
+                this.aud.PlayOneShot(this.audBlock);
+            }
         }
         if (other.gameObject.CompareTag("Arrow_D"))
         {
@@ -227,6 +231,10 @@ public class PlayerController : MonoBehaviour
             CanGoUP = false;
             CanGoLeft = false;
             CanGoRight = false;
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.UpArrow))
+            {
+                this.aud.PlayOneShot(this.audBlock);
+            }
         }
         if (other.gameObject.CompareTag("Arrow_L"))
         {
@@ -234,6 +242,10 @@ public class PlayerController : MonoBehaviour
             CanGoUP = false;
             CanGoDown = false;
             CanGoRight = false;
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.DownArrow))
+            {
+                this.aud.PlayOneShot(this.audBlock);
+            }
         }
         if (other.gameObject.CompareTag("Arrow_R"))
         {
@@ -241,6 +253,10 @@ public class PlayerController : MonoBehaviour
             CanGoUP = false;
             CanGoDown = false;
             CanGoLeft = false;
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
+            {
+                this.aud.PlayOneShot(this.audBlock);
+            }
         }
 
     }
