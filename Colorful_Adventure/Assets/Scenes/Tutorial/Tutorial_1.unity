@@ -707,7 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentType: 7
-  manager: {fileID: 0}
+  manager: {fileID: 1396076494}
   Parent_stop: {fileID: 0}
 --- !u!114 &507443631
 MonoBehaviour:
@@ -1137,7 +1137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentType: 2
-  manager: {fileID: 0}
+  manager: {fileID: 1396076494}
   Parent_stop: {fileID: 0}
 --- !u!114 &756582058
 MonoBehaviour:
@@ -1601,7 +1601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentType: 2
-  manager: {fileID: 0}
+  manager: {fileID: 1396076494}
   Parent_stop: {fileID: 0}
 --- !u!114 &1066554177
 MonoBehaviour:
@@ -1792,7 +1792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentType: 7
-  manager: {fileID: 0}
+  manager: {fileID: 1396076494}
   Parent_stop: {fileID: 0}
 --- !u!114 &1132533865
 MonoBehaviour:
