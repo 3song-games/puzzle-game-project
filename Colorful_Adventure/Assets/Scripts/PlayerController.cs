@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
                 int x = (int)(MapArr[i].transform.position.x / 1.1f + 0.5f);
                 int z = (int)(MapArr[i].transform.position.z / 1.1f + 0.5f);
                 movable[x, z] = false; // 기본적으로는 컬러큐브 pass 불가
-                if (playerColor.material.color == MapArr[i].gameObject.GetComponent<Renderer>().material.color)
+                if (playerColor.material.color == MapArr[i].gameObject.GetComponent<Renderer>().material.color &&ballCount>0)
                 // only if (플레이어 색 == 컬러큐브 색)
                 {
                     movable[x, z] = true; // can pass
@@ -293,7 +293,7 @@ public class PlayerController : MonoBehaviour
                 this.aud.PlayOneShot(this.audWater); //물 타일 오염 시 효과음 재생
 
                 waterdropColor.material.color = new Color32(5, 13, 38, 255);
-                playerColor.material.color = Color.white;
+                playerColor.material.color = Color.white; 
                 Debug.Log("RuinedWater");
             }
             else
