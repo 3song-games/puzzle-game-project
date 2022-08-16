@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
         return finalGetBall;
     }
 
+    //사용되는 쉐이더 이름 로드
+    string shaderName = "Standard";
+    string shaderName1 = "UI/Unlit/Transparent";
+
     public GameObject IfClear; // 관문 통과 성공 시 성공 팝업창 활성화
 
     public GameObject IfFailed; // 실패 팝업창 활성화
@@ -161,6 +165,12 @@ public class PlayerController : MonoBehaviour
             this.aud.PlayOneShot(this.audColorBall);//흡수 효과음
             this.aud.volume = 1.0f;
 
+            // 색방울을 먹을 시 쉐이더 기본으로 변경
+            if (ballCount != 0)
+            {
+                playerColor.material.shader = Shader.Find(shaderName);
+            }
+
             if (ballCount == 1)
             {
                 playerColor.material.color = ballColor.material.color;
@@ -293,7 +303,8 @@ public class PlayerController : MonoBehaviour
                 this.aud.PlayOneShot(this.audWater); //물 타일 오염 시 효과음 재생
 
                 waterdropColor.material.color = new Color32(5, 13, 38, 255);
-                playerColor.material.color = Color.white; 
+                playerColor.material.color = new Color32(255, 255, 255, 159);
+                playerColor.material.shader = Shader.Find(shaderName1);
                 Debug.Log("RuinedWater");
             }
             else
