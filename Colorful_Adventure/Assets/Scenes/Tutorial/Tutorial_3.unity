@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.7254902, g: 0.88235295, b: 0.92156863, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3444,19 +3444,19 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 55
+    m_FontSize: 47
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC0C9\uBC29\uC6B8\uC744 3\uD68C \uC774\uC0C1 \uC218\uC9D1\uD558\uBA74\n\uC0C1\uC790\uB294
-    \uAC80\uC740\uC0C9\uC774 \uB429\uB2C8\uB2E4"
+  m_Text: "\uC0C9\uBC29\uC6B8\uC744 3\uD68C \uC774\uC0C1 \uC218\uC9D1\uD558\uBA74
+    \n\uC0C1\uC790\uB294 \uAC80\uC740\uC0C9\uC774 \uB429\uB2C8\uB2E4"
 --- !u!222 &1439660883
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3480,9 +3480,9 @@ RectTransform:
   m_Father: {fileID: 1235150382}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1500, y: -150.00003}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 400}
   m_SizeDelta: {x: 1000, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1506642758
@@ -3991,20 +3991,21 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 55
+    m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC0C9\uBC29\uC6B8\uC744 \uC218\uC9D1\uD55C \uC0C1\uC790\uB294 \uBB3C\uD0C0\uC77C\uB85C
-    \uC0C9\uC744 \uC53B\uC744 \uC218 \uC788\uC9C0\uB9CC\n\uC0AC\uC6A9\uD55C \uBB3C\uD0C0\uC77C\uC740
-    \uB354\uC774\uC0C1 \uC774\uC6A9\uD558\uAC70\uB098 \uC774\uB3D9\uD560 \uC218 \uC5C6\uC5B4\uC694"
+  m_Text: "\uC0C9\uBC29\uC6B8\uC744 \uC218\uC9D1\uD55C \uC0C1\uC790\uB294 \uBB3C\uD0C0\uC77C\uC744
+    \uD65C\uC6A9\uD574 \uC0C9\uC744 \uC53B\uC5B4\uB0BC \uC218 \uC788\uC2B5\uB2C8\uB2E4\n\uBB3C\uD0C0\uC77C\uC740
+    1\uD68C \uC0AC\uC6A9 \uC9C1\uD6C4 \uC624\uC5FC\uB418\uBA70 \uB354\uC774\uC0C1\uC758
+    \uC0AC\uC6A9\uACFC \uC774\uB3D9\uC774 \uBD88\uAC00\uD574\uC694"
 --- !u!222 &1853879037
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4028,10 +4029,10 @@ RectTransform:
   m_Father: {fileID: 1235150382}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1500, y: -200}
-  m_SizeDelta: {x: 2000, y: 270}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 350}
+  m_SizeDelta: {x: 1400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1861743604
 PrefabInstance:
