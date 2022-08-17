@@ -8,15 +8,21 @@ public class MainBtns : MonoBehaviour {
 
     public BTNType currentType;
     public GameManagerLogic manager;
+    public static bool GameIsPaused = false;
 
     public GameObject Parent_stop;
 
+    //private bool IsPause;
+
 
     private void Start() {
+        //IsPause = false;
     }
     public void OnBtnClick() {
+        Time.timeScale = 1;
         switch(currentType)
         {
+
             case BTNType.GameStart:
                 Debug.Log("and then choose the level");
                 GetComponent<AudioSource>().Play();
@@ -42,22 +48,26 @@ public class MainBtns : MonoBehaviour {
             
             case BTNType.Stop:
                 Parent_stop.transform.Find("StopPopup").gameObject.SetActive(true);
+                Time.timeScale = 0;
                 GetComponent<AudioSource>().Play();
                 break;
             
             case BTNType.Return:
                 Parent_stop.transform.Find("StopPopup").gameObject.SetActive(false);
                 GetComponent<AudioSource>().Play();
+                Time.timeScale = 1;
                 break;
             
             case BTNType.Continue:
                 SceneManager.LoadScene((manager.stage) +1);
                 GetComponent<AudioSource>().Play();
+                Time.timeScale = 1;
                 break;
             
             case BTNType.BacktoMainMenu:
                 SceneManager.LoadScene("MainMenu");
                 GetComponent<AudioSource>().Play();
+                Time.timeScale = 1;
                 break;
 
 

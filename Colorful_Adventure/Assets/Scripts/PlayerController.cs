@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public static bool GameIsPaused = false;
     private bool CanGoRight, CanGoLeft, CanGoUP, CanGoDown;
     private bool[,] movable = new bool[100, 100]; // 움직일 수 있는 좌표평면(Map)
 
@@ -99,6 +100,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(Time.timeScale != 0) {
         MeetSpecialCube();
         // 움직일 수 없는 경우, do not move
         if (!movable[(int)(targetPosition.x / 1.1f + 0.5f), (int)(targetPosition.z / 1.1f + 0.5f)])
@@ -147,9 +149,8 @@ public class PlayerController : MonoBehaviour
             targetPosition = transform.position + new Vector3(0, 0, 1.1f);
         }
 
-
+        }
     }
-
     private void OnTriggerEnter(Collider other)
     {
         Renderer ballColor = other.GetComponent<MeshRenderer>();
