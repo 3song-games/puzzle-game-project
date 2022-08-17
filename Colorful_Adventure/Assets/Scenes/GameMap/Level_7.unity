@@ -2066,7 +2066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalBallCount: 5
-  stage: 18
+  stage: 17
   totalBallText: {fileID: 668594044}
   playerBallText: {fileID: 1258475601}
 --- !u!23 &1396076491

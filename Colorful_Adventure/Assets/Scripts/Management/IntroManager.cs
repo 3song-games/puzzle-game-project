@@ -14,7 +14,6 @@ public class IntroManager : MonoBehaviour
     private float time_loading = 6;
     private float time_current;
     private float time_start;
-    //로딩 중 팀 로고도 보이게 할 거면 여기에 같은 맥락으로 추가하면 됨
     // Start is called before the first frame update
     void Start()
     {
@@ -34,11 +33,6 @@ public class IntroManager : MonoBehaviour
         i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
         j.color = new Color(j.color.r, j.color.g, j.color.b, 0);
         z.color = new Color(z.color.r, z.color.g, z.color.b, 0);
-
-        /*while (i.color.a > 0.0f) {
-            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime/t));
-            yield return null;
-        }*/
 
         while (j.color.a < 1.0f) {
             j.color = new Color(j.color.r, j.color.g, j.color.b, j.color.a + (Time.deltaTime / t));

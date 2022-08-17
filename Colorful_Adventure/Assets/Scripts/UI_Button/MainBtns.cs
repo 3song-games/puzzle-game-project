@@ -12,11 +12,8 @@ public class MainBtns : MonoBehaviour {
 
     public GameObject Parent_stop;
 
-    //private bool IsPause;
-
 
     private void Start() {
-        //IsPause = false;
     }
     public void OnBtnClick() {
         Time.timeScale = 1;
